@@ -9,12 +9,26 @@ const clinicSchema = new mongoose.Schema({
         type:Number,
         required:true
     },
+    gender: {
+      type: String,
+      enum: ['Male', 'Female', 'Non-binary', 'Other'],
+      required: true
+  },
+  contact_number: {
+    type: String,
+    required: true
+  },
     admit_date: {
         type: Date
       },
       admit:{
         type:Boolean
-      }
+      },
+      medical_history: {
+        type: String,
+        default: []
+    }
+  
     });
 
 
