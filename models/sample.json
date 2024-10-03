@@ -1,0 +1,23 @@
+
+[
+    {
+    "name": "John Doe",
+    "age": 30,
+    "gender": "Male",
+    "contact_number": "+1234567890",
+    "admit_date": "2023-10-03T00:00:00Z",
+    "admit": true,
+    "medical_history": "No known allergies."
+  },
+  {
+    "name": "Jane Smith",
+    "age": 45,
+    "gender": "Female",
+    "contact_number": "+1987654321",
+    "admit_date": "2023-09-25T14:30:00Z",
+    "admit": false,
+    "medical_history": "Diabetes, Hypertension"
+  }
+]
+
+  
