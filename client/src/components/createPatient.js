@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-// import Notification from './Notification';
+import Notification from './Notification';
 
 const API_URL = process.env.REACT_APP_API_URL
 
 const PatientAdd = ({ onPatientAdd = () => { } }) => {
     const [name,setName] = useState('')
     const [age,setAge] = useState('')
-    const [gender,setGender] = useState('')
     const [co_number,setNumber] = useState('')
+    const [gender,setGender] = useState('')
     const navigate = useNavigate()
     const [showNotification,setShowNotification] = useState(null)
     
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (!name || !age) return
+        if (!name || !age || !co_number || !gender) return
 
         try {
             const response = await axios.post(API_URL, { name, age, gender, co_number });
@@ -31,7 +31,7 @@ const PatientAdd = ({ onPatientAdd = () => { } }) => {
             setShowNotification({ type: 'success', text: `Patient "${response.data.name}" added successfully!` });
       
             // Navigate to the new person's detail page
-            setTimeout(() => navigate(`/patient/${newPatientId}`), 1000); // Wait for 1 seconds before navigating
+            setTimeout(() => navigate(`/detail/${newPatientId}`), 1000); // Wait for 1 seconds before navigating
           } catch (error) {
             console.error('Error adding the patient:', error);
             setShowNotification({ type: 'error', text: 'Failed to add the patient. Please try again.' });
@@ -52,7 +52,7 @@ const PatientAdd = ({ onPatientAdd = () => { } }) => {
 
               <input type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)} required className="input-field" />
 
-              <input type="number" placeholder="co-number" value={Number} onChange={(e) => setNumber(e.target.value)} required className="input-field" />
+              <input type="number" placeholder="contact-number" value={co_number} onChange={(e) => setNumber(e.target.value)} required className="input-field" />
 
               <select type='select' placeholder="Select Gender" name="Sgender" value={gender} onChange={(e) => setGender(e.target.value)} required className='input-field'>
                 <option value="Male">Male</option>
