@@ -1,7 +1,14 @@
 /* src/styles/App.css */
 
 /* Global Box Styles */
+body{
+  background-image: url('photo_2024-12-04_12-12-14.jpg'); 
+}
 .box-container {
+/* Adjust the path as needed */
+  background-size: cover; /* Ensures the image covers the entire div */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,7 +19,7 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   max-width: 500px;
   /* Changed from fixed width to max-width */
-  margin: 50px auto;
+  margin:  auto;
   background-color: #f9f9f9;
 }
 

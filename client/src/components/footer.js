@@ -6,10 +6,12 @@ const Footer = () => (
       bgcolor: 'background.paper',
       color: 'text.secondary',
       py: 4,
-      // width: '100%',
+      width: '100vw',
       height: '50px',
       textAlign: 'center',
-      borderTop: `1px solid ${theme => theme.palette.primary.main}`, // Optional: add a top border
+      borderTop: `1px solid ${theme => theme.palette.primary.main}`,
+      position:'absolute',
+      bottom:0 // Optional: add a top border
     }}
   >
     <Typography variant="h6" gutterBottom>
