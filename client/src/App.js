@@ -7,10 +7,18 @@ import PatientEdit from './components/updatePatient';
 import HomePage from './components/homePage';
 import Footer from './components/footer';
 import Navbar from './components/navbar';
+
+import theme from './container/Theme';
+import {ThemeProvider} from '@mui/material/styles';
+import {CssBaseline, Box} from '@mui/material';
+
 import './App.css'
 
 const App = () => {
     return (
+        <ThemeProvider theme={theme}>
+      <CssBaseline />
+
         <Router>
             <Navbar />
             <div className="box-container">
@@ -25,6 +33,8 @@ const App = () => {
             </div>
                <Footer/>
         </Router>
+        </ThemeProvider>
+
     );
 };
 

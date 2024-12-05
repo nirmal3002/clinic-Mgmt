@@ -1,9 +1,9 @@
 /* src/styles/App.css */
 
 /* Global Box Styles */
-body{
+/* body{
   background-image: url('photo_2024-12-04_12-12-14.jpg'); 
-}
+} */
 .box-container {
 /* Adjust the path as needed */
   background-size: cover; /* Ensures the image covers the entire div */
