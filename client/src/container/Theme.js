@@ -2,10 +2,10 @@
 import { createTheme } from '@mui/material/styles';
 
 const rosePineColors = {
-  base: '#191724',
-  surface: '#1f1d2e',
-  overlay: '#26233a',
-  muted: '#6e6a86',
+  base: '#8c4351',
+  surface: ' #8f5e15	',
+   overlay: ' #8f5e15	',
+  muted: ' #634f30	',
   subtle: '#908caa',
   text: '#e0def4',
   love: '#eb6f92',
@@ -94,3 +94,19 @@ const theme = createTheme({
 });
 
 export default theme;
+
+//  #8c4351	
+//  #965027	
+//  #8f5e15	
+//  #634f30	
+//  #385f0d	
+//  #33635c	
+//  #006c86	
+//  #0f4b6e	
+//  #2959aa	
+//  #5a3e8e	
+//  #343b58	
+//  #40434f	
+//  #343B58	
+//  #6c6e75	
+//  #e6e7ed
