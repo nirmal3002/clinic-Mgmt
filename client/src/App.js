@@ -10,7 +10,7 @@ import Navbar from './components/navbar';
 
 import solarizedTheme from './container/Theme';
 import {ThemeProvider} from '@mui/material/styles';
-import {CssBaseline, Box} from '@mui/material';
+import {CssBaseline} from '@mui/material';
 
 import './App.css'
 
