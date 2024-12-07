@@ -8,7 +8,7 @@ import HomePage from './components/homePage';
 import Footer from './components/footer';
 import Navbar from './components/navbar';
 
-import theme from './container/Theme';
+import solarizedTheme from './container/Theme';
 import {ThemeProvider} from '@mui/material/styles';
 import {CssBaseline, Box} from '@mui/material';
 
@@ -16,7 +16,7 @@ import './App.css'
 
 const App = () => {
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={solarizedTheme}>
       <CssBaseline />
 
         <Router>

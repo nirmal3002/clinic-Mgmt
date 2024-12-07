@@ -1,58 +1,60 @@
-// src/theme/rosepine.js
+// src/theme/solarized.js
 import { createTheme } from '@mui/material/styles';
 
-const rosePineColors = {
-  base: '#8c4351',
-  surface: ' #8f5e15	',
-   overlay: ' #8f5e15	',
-  muted: ' #634f30	',
-  subtle: '#24283b	',
-  text: '#24283b',
-  love: '#006c86',
-  gold: '#0f4b6e',
-  rose: '#2959aa',
-  pine: '#5a3e8e',
-  foam: '#343b58',
-  iris: '#40434f',
-  highlightLow: '#e6e7ed',
-  highlightMed: '#403d52',
-  highlightHigh: '#524f67',
+const solarizedColors = {
+  base: '#002b36',
+  surface: '#073642',
+  overlay: '#586e75',
+  muted: '#657b83',
+  subtle: '#839496',
+  text: '#fdf6e3',
+  love: '#dc322f',
+  gold: '#b58900',
+  green: '#859900',
+  cyan: '#2aa198',
+  blue: '#268bd2',
+  magenta: '#d33682',
+  violet: '#6c71c4',
+  highlightLow: '#073642',
+  highlightMed: '#586e75',
+  highlightHigh: '#93a1a1',
+  skin:'#ffc3a0',
 };
 
-const theme = createTheme({
+const solarizedTheme = createTheme({
   palette: {
     mode: 'dark',
     background: {
-      default: rosePineColors.base,
-      paper: rosePineColors.surface,
+      default: solarizedColors.base,
+      paper: solarizedColors.surface,
     },
     primary: {
-      main: rosePineColors.rose,
+      main: solarizedColors.skin,
     },
     secondary: {
-      main: rosePineColors.pine,
+      main: solarizedColors.cyan,
     },
     error: {
-      main: rosePineColors.love,
+      main: solarizedColors.love,
     },
     warning: {
-      main: rosePineColors.gold,
+      main: solarizedColors.gold,
     },
     info: {
-      main: rosePineColors.foam,
+      main: solarizedColors.cyan,
     },
     success: {
-      main: rosePineColors.pine,
+      main: solarizedColors.green,
     },
     text: {
-      primary: rosePineColors.text,
-      secondary: rosePineColors.subtle,
+      primary: solarizedColors.text,
+      secondary: solarizedColors.subtle,
     },
   },
   typography: {
     fontFamily: '"Fira Sans", "Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
-      fontFamily: '"Space Mono", monospace',
+      fontFamily: ' monospace',
     },
     h2: {
       fontFamily: '"Space Mono", monospace',
@@ -74,7 +76,7 @@ const theme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: rosePineColors.surface,
+          backgroundColor: solarizedColors.surface,
         },
       },
     },
@@ -89,24 +91,8 @@ const theme = createTheme({
       styleOverrides: `
         @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap');
       `,
-    }
+    },
   },
 });
 
-export default theme;
-
-//  #8c4351	
-//  #965027	
-//  #8f5e15	
-//  #634f30	
-//  #385f0d	
-//  #33635c	
-//  #006c86	
-//  #0f4b6e	
-//  #2959aa	
-//  #5a3e8e	
-//  #343b58	
-//  #40434f	
-//  #343B58	
-//  #6c6e75	
-//  #e6e7ed
+export default solarizedTheme;

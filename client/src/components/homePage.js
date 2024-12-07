@@ -5,7 +5,7 @@ import { Container, Typography, Button, Box } from '@mui/material';
 const HomePage = () => {
     return (
       <Container maxWidth="lg" sx={{ textAlign: 'center', py: 5 }}>
-        <Typography variant="h2" component="h1" color="success">
+        <Typography variant="h2" component="h1" color="white">
           Welcome to Doctor's Clinic
         </Typography>
         <Typography variant="h5" gutterBottom>

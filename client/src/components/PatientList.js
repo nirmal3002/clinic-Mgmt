@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import Notification from './Notification';
+import { colors } from '@mui/material';
 
 const API_URL = process.env.REACT_APP_API_URL
 console.log(API_URL);
@@ -25,7 +26,7 @@ const PatientList = () => {
 
   return (
     <div className="box-container">
-      <h1>All Patient List</h1>
+      <h1 style={{fontFamily:"roboto"}}>All Patient List</h1>
       <Link to="/add" className="btn btn-add add-person-button">Add Patient</Link>
       <table>
         <thead>
