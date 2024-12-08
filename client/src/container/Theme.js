@@ -87,11 +87,11 @@ const solarizedTheme = createTheme({
         },
       },
     },
-    MuiCssBaseline: {
-      styleOverrides: `
-        @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap');
-      `,
-    },
+    // MuiCssBaseline: {
+    //   styleOverrides: `
+    //     @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap');
+    //   `,
+    // },
   },
 });
 

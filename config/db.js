@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
+
 
 const connectDB = async () => {
     try {
-        await mongoose.connect('mongodb://localhost:27017/mydatabase');
+        await mongoose.connect(process.env.REACT_APP_API_URL);
         console.log('Connected to MongoDB');
     } catch (err) {
         console.error('Failed to connect to MongoDB', err);
