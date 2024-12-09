@@ -3,8 +3,8 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Notification from './Notification';
 
-const API_URL = process.env.REACT_APP_API_URL;
-console.log(API_URL)
+const BACKEND_API_URL = process.env.BACKEND_API_URL;
+console.log(BACKEND_API_URL)
 
 const PatientDetail = () => {
   const { id } = useParams();
@@ -16,7 +16,7 @@ const PatientDetail = () => {
     const fetchPatient = async () => {
       try {
         console.log('Fetching patient data...');
-        const response = await axios.get(`${API_URL}/${id}`);
+        const response = await axios.get(`${BACKEND_API_URL}/${id}`);
         console.log('Patient data:', response.data);
         setPatient(response.data);
       } catch (error) {
@@ -29,7 +29,7 @@ const PatientDetail = () => {
 
   const deletePatient = async () => {
     try {
-      await axios.delete(`${API_URL}/${id}`);
+      await axios.delete(`${BACKEND_API_URL}/${id}`);
       setShowNotification({ type: 'success', text: 'Patient deleted successfully!' });
       setTimeout(() => navigate('/'), 1000); // Navigate after showing notification for 3 seconds
     } catch (error) {
