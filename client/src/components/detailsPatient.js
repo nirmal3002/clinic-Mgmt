@@ -51,7 +51,7 @@ const PatientDetail = () => {
   }
 
   return (
-    <div className="box-container">
+    <div className="box-container" style={{}}>
       <h1>{patient.name}</h1>
       <div className="patient-info">
         <p>Age: {patient.age}</p>
