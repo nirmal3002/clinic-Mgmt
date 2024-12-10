@@ -24,17 +24,6 @@ app.get("/", (req, res) => {
     res.send("HomePage");
 });
 
-// app.post("/clinics",async (req,res)=>{
-//     let newData = new clinicmodel({
-//         name:"bbb",
-//         age: 12,
-//         gender:"male",
-//         contact_number: 122345,
-//     })
-//     const Data = await newData.save();
-//     res.json(Data)
-//     console.log("created",Data)
-// })
 
 
 app.use('/api', clinicRoutes); // Use book routes with prefix '/api'
