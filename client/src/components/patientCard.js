@@ -16,6 +16,7 @@ const PatientCard = ({ patient }) => {
           transform: 'scale(1.05)',
           boxShadow: 6,
         },
+        marginBottom:"10px"
       }}
     >
       <img

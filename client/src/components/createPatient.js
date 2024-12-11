@@ -10,7 +10,7 @@ const CreatePatient = () => {
     name: '',
     age: '',
     gender: '',
-    co_number: '',
+    contact_number: '',
     admit: '',
     admit_date: '',
     medical_history: '',
@@ -22,16 +22,22 @@ const CreatePatient = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    // const patient = {
+    //   "name": "John Doe2",
+    //   "age": 30,
+    //   "gender": "male",
+    //   "contact_number": "1234567890",
+    //   "admit": true,
+    //   "medical_history": "No significant medical history."
+    // }
     console.log(patient)
-    axios
-    // .post("/api/clinics", patient)
-    .post("https://5000-nirmal3002-clinicmgmt-e42r6tcmjrs.ws-us117.gitpod.io/api/clinics", patient)
-      .then((res) => {
+    axios.post('https://5000-nirmal3002-clinicmgmt-u8iv2dgoy2d.ws-us117.gitpod.io/api/clinics', patient)
+    .then((res) => {
         setPatient({
           name: '',
           age: '',
           gender: '',
-          co_number: '',
+          contact_number: '',
           admit: '',
           admit_date: '',
           medical_history: '',
@@ -139,10 +145,10 @@ const CreatePatient = () => {
 
               <div className="form-group">
                 <input
-                  type="number"
-                  name="co_number"
+                  type="string"
+                  name="contact_number"
                   placeholder="Contact Number"
-                  value={patient.co_number}
+                  value={patient.contact_number}
                   onChange={onChange}
                   required
                   className="input-field"
@@ -161,8 +167,8 @@ const CreatePatient = () => {
                   <option value="" disabled>
                     "Yes" or "No"
                   </option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
                 </select>
               </div>
               <br />
