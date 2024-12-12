@@ -13,13 +13,13 @@ const Patientupdate= () => {
 
 const { id } = useParams();
 const navigate = useNavigate();
-const [patient, setPatient] = useState({ name: '', age: '' , co_number: '' , gender: '' });
+const [patient, setPatient] = useState({ name: '', age: '' , contact_number: '' , gender: '' });
 // const [showNotification,setShowNotification] = useState(null)
 
   useEffect(() => {
     const fetchPatient = async () => {
       try {
-        const response = await axios.get(`${API_URL}/${id}`);
+        const response = await axios.get(`https://5000-nirmal3002-clinicmgmt-u8iv2dgoy2d.ws-us117.gitpod.io/api/clinics/${id}`);
         setPatient(response.data);
       } catch (error) {
         console.error('Error fetching person:', error);
@@ -36,7 +36,7 @@ const [patient, setPatient] = useState({ name: '', age: '' , co_number: '' , gen
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`${API_URL}/${id}`, patient);
+      await axios.put(`https://5000-nirmal3002-clinicmgmt-u8iv2dgoy2d.ws-us117.gitpod.io/api/clinics/${id}`, patient);
       navigate(`/detail/${id}`); // Redirect to person details page after update
     //   setShowNotification({ type: 'success', text: `Patient "${response.data.name}" updated successfully!` });
     } catch (error) {
@@ -83,9 +83,9 @@ const [patient, setPatient] = useState({ name: '', age: '' , co_number: '' , gen
         />
           <input
           type="string"
-          name="co-number"
+          name="contact_number"
           placeholder="contact-number"
-          value={patient.co_number}
+          value={patient.contact_number}
           onChange={handleChange}
           required
           className="input-field"

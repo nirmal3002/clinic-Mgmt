@@ -26,7 +26,7 @@ const PatientCard = ({ patient }) => {
       />
       <CardContent sx={{ flexGrow: 1 }}>
         <Typography variant="h6" component="div" color="primary" gutterBottom>
-          <Link to={`/show-book/${patient._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Link to={`/show-patient/${patient._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
             {patient.name}
           </Link>
         </Typography>
@@ -37,7 +37,7 @@ const PatientCard = ({ patient }) => {
           {patient.gender}
         </Typography>
         <Typography variant="subtitle1" color="text.secondary">
-          {patient.co_number}
+          {patient.contact_number}
         </Typography>
         <Typography variant="subtitle1" color="text.secondary">
           {patient.admit}
