@@ -20,9 +20,9 @@ const PatientCard = ({ patient }) => {
       }}
     >
       <img
-        src='https://images.unsplash.com/photo-1495446815901-a7297e633e8d'
+        src='https://img.freepik.com/premium-photo/3d-add-user-icon-create-group-symbol-new-profile-account-people-icon-plus-avatar-human-person-people-icon-trendy-modern-vector-3d-style_839035-1753845.jpg'
         alt='Books'
-        style={{ height: 200, objectFit: 'cover', width: '100%' }}
+        style={{ height: 200, objectFit: 'cover', width: '100%' , display:'flex' ,justifyContent: "center" , alignContent:"center"}}
       />
       <CardContent sx={{ flexGrow: 1 }}>
         <Typography variant="h6" component="div" color="primary" gutterBottom>
