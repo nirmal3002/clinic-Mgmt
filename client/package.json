@@ -25,8 +25,8 @@
   "scripts": {
     "start": "react-scripts start",
     "db": "json-server --watch db.json --port 5000",
-    "build": "react-scripts build",
     "test": "react-scripts test",
+    "build": "react-scripts build",
     "eject": "react-scripts eject"
 
   },
