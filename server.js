@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require("cors")
 const bodyParser = require("body-parser");
 require("dotenv").config( { path: "./config.env" } )
+const path = require('path');
 
 
 const connectDB = require('./config/db');
@@ -33,6 +34,15 @@ app.get("/", (req, res) => {
 
 app.use('/api', clinicRoutes); // Use book routes with prefix '/api'
 
+app.use(express.static(path.join(__dirname, "./client/build")));
+app.get("*", function (_, res) {
+    res.sendFile(
+        path.join(__dirname, "./client/build/index.html"),
+        function (err) {
+            res.status(500).send(err);
+        }
+    );
+});
 // START SERVER
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
