@@ -19,7 +19,7 @@ const [patient, setPatient] = useState({ name: '', age: '' , contact_number: '' 
   useEffect(() => {
     const fetchPatient = async () => {
       try {
-        const response = await axios.get(`https://5000-nirmal3002-clinicmgmt-u8iv2dgoy2d.ws-us117.gitpod.io/api/clinics/${id}`);
+        const response = await axios.get(`https://5000-nirmal3002-clinicmgmt-s75y7ttlzli.ws-us117.gitpod.io/api/clinics/${id}`);
         setPatient(response.data);
       } catch (error) {
         console.error('Error fetching person:', error);

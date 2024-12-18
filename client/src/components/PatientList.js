@@ -75,7 +75,7 @@ import {
 
 } from '@mui/material';
 import PatientCard from './patientCard';
- // Ensure this handles patient props correctly
+// Ensure this handles patient props correctly
 
 function ShowpersonList() {
   const [patients, setPatients] = useState([]); // Updated naming to "patients"
@@ -84,7 +84,7 @@ function ShowpersonList() {
 
   useEffect(() => {
     axios
-      .get('https://5000-nirmal3002-clinicmgmt-u8iv2dgoy2d.ws-us117.gitpod.io/api/clinics') // Fetch patient data
+      .get('https://5000-nirmal3002-clinicmgmt-s75y7ttlzli.ws-us117.gitpod.io/api/clinics')
       .then((res) => {
         setPatients(res.data); // Populate patients
         setLoading(false); // Set loading to false
@@ -110,10 +110,10 @@ function ShowpersonList() {
         sx={{ mb: 4 }} >
         Add New Patient
       </Button>
-      {patients.map((patient,index) => (
-                            
-                     <Grid item xs={12} sm={6} md={4} key={index}>                  
-  <PatientCard patient={patient} />
+      {patients.map((patient, index) => (
+
+        <Grid item xs={12} sm={6} md={4} key={index}>
+          <PatientCard patient={patient} />
         </Grid>
       ))}
 

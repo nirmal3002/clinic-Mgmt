@@ -18,7 +18,12 @@ const app = express()
 // HANDLE MIDDLEWARE
 app.use(express.json());
 app.use(cors());
-
+// const corsOptions = {
+    //   origin: 'https://3000-nirmal3002-clinicmgmt-u8iv2dgoy2d.ws-us117.gitpod.io', // Replace with your frontend origin
+    //   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    //   credentials: true, // Allow cookies if needed
+    // };
+    // app.use(cors(corsOptions));
 
 app.get("/", (req, res) => {
     res.send("HomePage");
@@ -34,42 +39,4 @@ app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
 connectDB()
-//referance code
-// const express = require('express');
-// const cors = require('cors');
-// const dotenv = require('dotenv');
-
-// const connectDB = require('./config/db');
-// const clinicRoutes = require('./routes/clinicroutes');
-
-// dotenv.config({ path: './config.env' });
-
-// const app = express();
-
-// // Connect to MongoDB
-// connectDB();
-
-// // Middleware
-// app.use(express.json());
-
-// // CORS Configuration
-// const corsOptions = {
-//   origin: 'https://3000-nirmal3002-clinicmgmt-u8iv2dgoy2d.ws-us117.gitpod.io', // Replace with your frontend origin
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//   credentials: true, // Allow cookies if needed
-// };
-// app.use(cors(corsOptions));
-
-// // Routes
-// app.get('/', (req, res) => {
-//   res.send('Server is running successfully!');
-// });
-
-// app.use('/api', clinicRoutes);
-
-// // Port and Server Start
-// const PORT = process.env.PORT || 5000;
-// app.listen(PORT, () => {
-//   console.log(`Server running at http://localhost:${PORT}`);
-// });
 

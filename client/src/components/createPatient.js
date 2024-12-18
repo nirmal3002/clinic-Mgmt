@@ -31,7 +31,7 @@ const CreatePatient = () => {
     //   "medical_history": "No significant medical history."
     // }
     console.log(patient)
-    axios.post('https://5000-nirmal3002-clinicmgmt-u8iv2dgoy2d.ws-us117.gitpod.io/api/clinics', patient)
+    axios.post('https://5000-nirmal3002-clinicmgmt-s75y7ttlzli.ws-us117.gitpod.io/api/clinics', patient)
     .then((res) => {
         setPatient({
           name: '',
