@@ -84,7 +84,7 @@ function ShowpersonList() {
 
   useEffect(() => {
     axios
-      .get('https://5000-nirmal3002-clinicmgmt-s75y7ttlzli.ws-us117.gitpod.io/api/clinics')
+      .get('https://clinic-management-0q8q.onrender.com/api/clinics')
       .then((res) => {
         setPatients(res.data); // Populate patients
         setLoading(false); // Set loading to false

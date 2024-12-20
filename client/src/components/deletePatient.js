@@ -7,7 +7,7 @@ const DeletePerson = ({ id, onDelete }) => {
       try {
         // Replace the endpoint with your actual API endpoint
         const response = await axios.delete(
-          `https://5000-nirmal3002-clinicmgmt-s75y7ttlzli.ws-us117.gitpod.io/api/clinics/${id}`
+          `https://clinic-management-0q8q.onrender.com/api/clinics/${id}`
         );
         if (response.status === 200 || response.status === 204) {
           onDelete(id); // Inform parent component about successful deletion

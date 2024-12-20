@@ -22,16 +22,9 @@ const CreatePatient = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // const patient = {
-    //   "name": "John Doe2",
-    //   "age": 30,
-    //   "gender": "male",
-    //   "contact_number": "1234567890",
-    //   "admit": true,
-    //   "medical_history": "No significant medical history."
-    // }
+ 
     console.log(patient)
-    axios.post('https://5000-nirmal3002-clinicmgmt-s75y7ttlzli.ws-us117.gitpod.io/api/clinics', patient)
+    axios.post('https://clinic-management-0q8q.onrender.com/api/clinics', patient)
     .then((res) => {
         setPatient({
           name: '',
@@ -52,9 +45,7 @@ const CreatePatient = () => {
           theme: 'dark',
           transition: Slide,
         });
-        // setTimeout(() => {
-        //   navigate('/');
-        // }, 5000);
+       
       })
       .catch((err) => {
         console.error('Error in creating patient:', err);

@@ -234,7 +234,7 @@ const DetailsPatient = () => {
   const handleDeleteConfirm = async () => {
     try {
       await axios.delete(`c${id}`);
-      navigate('/patient-list'); // Redirect to patient list after deletion
+      navigate('/patientList'); // Redirect to patient list after deletion
     } catch (err) {
       console.error('Error deleting patient:', err);
     }

@@ -19,7 +19,7 @@ const [patient, setPatient] = useState({ name: '', age: '' , contact_number: '' 
   useEffect(() => {
     const fetchPatient = async () => {
       try {
-        const response = await axios.get(`https://5000-nirmal3002-clinicmgmt-s75y7ttlzli.ws-us117.gitpod.io/api/clinics/${id}`);
+        const response = await axios.get(`https://clinic-management-0q8q.onrender.com/api/clinics/${id}`);
         setPatient(response.data);
       } catch (error) {
         console.error('Error fetching person:', error);
@@ -36,7 +36,7 @@ const [patient, setPatient] = useState({ name: '', age: '' , contact_number: '' 
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`https://5000-nirmal3002-clinicmgmt-u8iv2dgoy2d.ws-us117.gitpod.io/api/clinics/${id}`, patient);
+      await axios.put(`https://clinic-management-0q8q.onrender.com/api/clinics/${id}`, patient);
       navigate(`/detail/${id}`); // Redirect to person details page after update
     //   setShowNotification({ type: 'success', text: `Patient "${response.data.name}" updated successfully!` });
     } catch (error) {
