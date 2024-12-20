@@ -165,7 +165,7 @@ const CreatePatient = () => {
                   className="input-field"
                 >
                   <option value="" disabled>
-                    "Yes" or "No"
+                    Admited before ?
                   </option>
                   <option value="true">Yes</option>
                   <option value="false">No</option>

@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node server.js",
-
-    "prod":"cd client && npm run build && cd .. && npm run server"
+    "prod": "cd client && npm run build && cd .. && npm run server"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +16,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.0",
+    "jspdf-autotable": "^3.8.4",
     "mongoose": "^8.7.0",
     "nodemon": "^3.1.7"
   }

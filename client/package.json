@@ -11,8 +11,12 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.7",
+    "file-saver": "^2.0.5",
     "json-server": "^1.0.0-beta.3",
+    "jspdf": "^2.5.2",
+    "jspdf-autotable": "^3.8.4",
     "material": "^0.9.20",
+    "notistack": "^3.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
@@ -20,7 +24,8 @@
     "react-scripts": "^5.0.1",
     "react-toastify": "^10.0.6",
     "server": "^1.0.41",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "xlsx": "^0.18.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,7 +33,6 @@
     "test": "react-scripts test",
     "build": "react-scripts build",
     "eject": "react-scripts eject"
-
   },
   "eslintConfig": {
     "extends": [

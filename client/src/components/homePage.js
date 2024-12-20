@@ -45,6 +45,10 @@ const HomePage = () => {
         >
           View patient
         </Button>
+        <Button component={Link} to="/export" color="primary" 
+          variant="contained" >
+          Download Patients-list
+        </Button>
       </Box>
     </Container>
   );

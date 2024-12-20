@@ -71,7 +71,7 @@ import {
   Button,
   Typography,
   Container,
-  Grid,
+  Grid
 
 } from '@mui/material';
 import PatientCard from './patientCard';

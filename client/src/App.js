@@ -5,6 +5,8 @@ import PatientEdit from './components/updatePatient';
 import HomePage from './components/homePage';
 import Footer from './components/footer';
 import Navbar from './components/navbar';
+import ExportPage from './components/ExportPage'
+
 
 import solarizedTheme from './container/Theme';
 import { ThemeProvider } from '@mui/material/styles';
@@ -26,7 +28,9 @@ const App = () => {
                         <Route path="/list" element={<PatientList />} />
                         <Route path="/add" element={< CreatePatient />} />
                         <Route path="/edit/:id" element={<PatientEdit />} />
-                        <Route path="/detail/:id" element={<DetailsPatient  />} />
+                        <Route path="/detail/:id" element={<DetailsPatient />} />
+                        <Route path="/export" element={<ExportPage />} />
+
                         <Route path="/" element={<HomePage />} />
 
                     </Routes>
