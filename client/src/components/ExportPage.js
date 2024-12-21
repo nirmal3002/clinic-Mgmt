@@ -14,7 +14,7 @@ const ExportPage = () => {
   const [patient, setPatient] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    axios.get('https://5000-nirmal3002-clinicmgmt-s75y7ttlzli.ws-us117.gitpod.io/api/clinics')
+    axios.get('https://clinic-management-0q8q.onrender.com/api/clinics')
       .then(res => {
         setPatient(res.data);
         setLoading(false);
