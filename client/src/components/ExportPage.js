@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Paper, Typography, Button, Box, CircularProgress } from '@mui/material';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
-// import TableViewIcon from '@mui/icons-material/TableView';
+import TableViewIcon from '@mui/icons-material/TableView';
 import DownloadIcon from '@mui/icons-material/Download';
 // import DescriptionIcon from '@mui/icons-material/Description';
 import axios from 'axios';
@@ -17,7 +17,6 @@ const ExportPage = () => {
     axios.get('https://clinic-management-0q8q.onrender.com/api/clinics')
       .then(res => {
         setPatient(res.data);
-        console.log(res.data);
         setLoading(false);
       })
       .catch(err => {
@@ -25,7 +24,7 @@ const ExportPage = () => {
         setLoading(false);
       });
   }, []);
-  console.log(patient);
+ 
   const exportToPDF = () => {
     const doc = new jsPDF();
     doc.setFontSize(16);
@@ -74,7 +73,39 @@ const ExportPage = () => {
             const data = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
             saveAs(data, 'patients-list.xlsx');
           };
+          const exportToCSV = () => {
+            const worksheet = XLSX.utils.json_to_sheet(patients.map(patient => ({
+              name: patient.name,
 
+              age: patient.age,
+              gender: patient.gender,
+              contact_number: patient.contact_number,
+              admit: patient.admit,
+              admit_date:patient.admit_date,
+              medical_history:patient.medical_history
+            })));
+            const csv = XLSX.utils.sheet_to_csv(worksheet);
+            const data = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+            saveAs(data, 'patients-list.csv');
+          };
+          const exportToText = () => {
+            let content = 'Patients List\n\n';
+            content += `Generated on: ${new Date().toLocaleDateString()}\n\n`;
+            
+            patients.forEach((patient, index) => {
+              content += `${index + 1}. PATIENTS DETAILS\n`;
+              content += `Name: ${patient.name}\n`;
+              content += `Age: ${patient.age}\n`;
+              content += `Gender: ${patient.gender}\n`;
+              content += `contact_number: ${patient.contact_number}\n`;
+              content += `admit: ${patient.admit}\n`;
+              content += `Admite Date: ${new Date(patient.admite_Date).toLocaleDateString()}\n`;
+              content += `medical_history: ${patient.medical_history}\n`;
+              content += '\n----------------------------\n\n';
+            });
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            saveAs(blob, 'patients-list.txt');
+          };
           
           if (loading) {
             return (
@@ -109,7 +140,7 @@ const ExportPage = () => {
                   >
                     Export as PDF
                   </Button>
-                  {/* { <Button
+                  { <Button
                     variant="contained"
                     size="large"
                     startIcon={<TableViewIcon />}
@@ -117,7 +148,7 @@ const ExportPage = () => {
                     sx={{ p: 2 }}
                   >
                     Export as CSV
-                  </Button> } */}
+                  </Button> }
                   { <Button
                     variant="contained"
                     size="large"
@@ -127,7 +158,7 @@ const ExportPage = () => {
                   >
                     Export as Excel
                   </Button> }
-                  {/* { <Button
+                  { <Button
                     variant="contained"
                     size="large"
                     startIcon={<DescriptionIcon />}
@@ -135,7 +166,7 @@ const ExportPage = () => {
                     sx={{ p: 2 }}
                   >
                     Export as Text
-                  </Button> } */}
+                  </Button> }
                 </Box>
                 <Typography variant="body2" sx={{ mt: 4 }} align="center" color="text.secondary">
                   Total Patient: {patient.length}
