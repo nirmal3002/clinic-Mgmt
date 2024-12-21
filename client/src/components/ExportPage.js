@@ -17,6 +17,7 @@ const ExportPage = () => {
     axios.get('https://clinic-management-0q8q.onrender.com/api/clinics')
       .then(res => {
         setPatient(res.data);
+        console.log(res.data);
         setLoading(false);
       })
       .catch(err => {
@@ -24,6 +25,7 @@ const ExportPage = () => {
         setLoading(false);
       });
   }, []);
+  console.log(patient);
   const exportToPDF = () => {
     const doc = new jsPDF();
     doc.setFontSize(16);
