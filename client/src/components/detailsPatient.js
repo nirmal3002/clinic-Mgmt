@@ -233,8 +233,8 @@ const DetailsPatient = () => {
 
   const handleDeleteConfirm = async () => {
     try {
-      await axios.delete(`c${id}`);
-      navigate('/patientList'); // Redirect to patient list after deletion
+      await axios.delete(`https://clinic-management-0q8q.onrender.com/api/clinics/${id}`);
+      navigate('/list'); // Redirect to patient list after deletion
     } catch (err) {
       console.error('Error deleting patient:', err);
     }

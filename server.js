@@ -9,10 +9,6 @@ const connectDB = require('./config/db');
 const clinicRoutes = require('./routes/clinicroutes');
 const clinicmodel = require('./models/clinicmodel');
 
-
-// CONNECT TO DB
-
-
 // INITIATE APP
 const app = express()
 
@@ -48,5 +44,6 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
+// CONNECT TO DB
 connectDB()
 
