@@ -1,0 +1,57 @@
+// import React, { useState, useEffect } from 'react';
+// import {
+//     Container,
+//     TextField,
+//     Typography,
+//     Box,
+//     Card,
+//     CardContent,
+//     Grid,
+//     MenuItem,
+//     Select,
+//     FormControl,
+//     InputLabel,
+//     Button,
+//     CircularProgress
+// } from '@mui/material';
+// import SearchIcon from '@mui/icons-material/Search';
+// import RestartAltIcon from '@mui/icons-material/RestartAlt';
+// import PatientCard from './patientCard';
+// import axios from 'axios';
+// const Searchpatient = () => {
+//     const [patients, setpatients] = useState([]);
+//     const [filteredpatients, setFilteredpatients] = useState([]);
+//     const [loading, setLoading] = useState(true);
+//     const [contact_number, setContact_number] = useState([]);
+
+//     const [filters, setFilters] = useState({
+//         searchTerm: '',
+//         searchField: 'name',
+//         sortBy: 'age',
+//         sortOrder: 'asc',
+//         Gender: 'all'
+//     });
+//     useEffect(() => {
+//         axios.get('/api/patient')
+//             .then(res => {
+//                 setpatients(res.data);
+//                 setFilteredpatients(res.data);
+//                 // Extract unique publishers
+//                 const uniqueContact_number = [...new Set(res.data.map(patient => patient.contact_number))];
+//                 setContact_number(uniqueContact_number);
+//                 setLoading(false);
+//             })
+//             .catch(err => {
+//                 console.error('Error fetching books:', err);
+//                 setLoading(false);
+//             });
+//     }, []);
+//     const applyFilters = () => {
+//         let result = [...patients];
+//    // Apply search
+//    if (filters.searchTerm) {
+//     result = result.filter(patient=> {
+//         const searchValue = patient[filters.searchField]?.toString().;
+//         return searchValue?.includes(filters.searchTerm.toLowerCase());
+//     });
+// }

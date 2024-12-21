@@ -67,9 +67,9 @@ const ExportPage = () => {
         ,
     })));
     
-    const workpatient = XLSX.utils.patient_new();
-            XLSX.utils.patient_append_sheet(workpatient, worksheet, "Patients");
-            const excelBuffer = XLSX.write(workpatient, { patientType: 'xlsx', type: 'array' });
+    const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Patients");
+            const excelBuffer = XLSX.write(workbook, { patientType: 'xlsx', type: 'array' });
             const data = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
             saveAs(data, 'patients-list.xlsx');
           };
