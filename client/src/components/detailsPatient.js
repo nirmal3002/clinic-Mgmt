@@ -215,7 +215,7 @@ const DetailsPatient = () => {
     const fetchPatient = async () => {
       try {
         const response = await axios.get(
-          `https://5000-nirmal3002-clinicmgmt-s75y7ttlzli.ws-us117.gitpod.io/api/clinics/${id}`
+          `https://clinic-management-0q8q.onrender.com/api/clinics/${id}`
         );
         setPatient(response.data);
       } catch (err) {
