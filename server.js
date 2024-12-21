@@ -18,13 +18,13 @@ const app = express()
 
 // HANDLE MIDDLEWARE
 app.use(express.json());
-app.use(cors());
-// const corsOptions = {
-    //   origin: 'https://3000-nirmal3002-clinicmgmt-u8iv2dgoy2d.ws-us117.gitpod.io', // Replace with your frontend origin
-    //   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    //   credentials: true, // Allow cookies if needed
-    // };
-    // app.use(cors(corsOptions));
+// app.use(cors());
+const corsOptions = {
+      origin: 'https://clinic-management-0q8q.onrender.com', // Replace with your frontend origin
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+      credentials: true, // Allow cookies if needed
+    };
+app.use(cors(corsOptions));
 
 app.get("/home", (req, res) => {
     res.send("HomePage");
