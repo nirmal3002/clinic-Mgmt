@@ -26,7 +26,7 @@ app.use(cors());
     // };
     // app.use(cors(corsOptions));
 
-app.get("/", (req, res) => {
+app.get("/home", (req, res) => {
     res.send("HomePage");
 });
 
