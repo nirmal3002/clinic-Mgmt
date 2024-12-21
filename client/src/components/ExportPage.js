@@ -3,7 +3,7 @@ import { Container, Paper, Typography, Button, Box, CircularProgress } from '@mu
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import TableViewIcon from '@mui/icons-material/TableView';
 import DownloadIcon from '@mui/icons-material/Download';
-// import DescriptionIcon from '@mui/icons-material/Description';
+import DescriptionIcon from '@mui/icons-material/Description';
 import axios from 'axios';
 import { saveAs } from 'file-saver';
 import jsPDF from 'jspdf';
@@ -74,7 +74,7 @@ const ExportPage = () => {
             saveAs(data, 'patients-list.xlsx');
           };
           const exportToCSV = () => {
-            const worksheet = XLSX.utils.json_to_sheet(patients.map(patient => ({
+            const worksheet = XLSX.utils.json_to_sheet(patient.map(patient => ({
               name: patient.name,
 
               age: patient.age,
@@ -92,7 +92,7 @@ const ExportPage = () => {
             let content = 'Patients List\n\n';
             content += `Generated on: ${new Date().toLocaleDateString()}\n\n`;
             
-            patients.forEach((patient, index) => {
+            patient.forEach((patient, index) => {
               content += `${index + 1}. PATIENTS DETAILS\n`;
               content += `Name: ${patient.name}\n`;
               content += `Age: ${patient.age}\n`;
