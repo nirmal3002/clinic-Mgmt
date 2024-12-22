@@ -92,7 +92,7 @@ const HomePage = () => {
               startIcon={<SearchIcon />}
               sx={{ py: 2 }}
             >
-              Search Books
+              Search Patient
             </Button>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>

@@ -6,6 +6,7 @@ import HomePage from './components/homePage';
 import Footer from './components/footer';
 import Navbar from './components/navbar';
 import ExportPage from './components/ExportPage'
+import SearchPatient from './components/SearchPatient';
 
 
 import solarizedTheme from './container/Theme';
@@ -30,7 +31,7 @@ const App = () => {
                         <Route path="/edit/:id" element={<PatientEdit />} />
                         <Route path="/detail/:id" element={<DetailsPatient />} />
                         <Route path="/export" element={<ExportPage />} />
-
+                        <Route path="/search" element={<SearchPatient />} />
                         <Route path="/" element={<HomePage />} />
 
                     </Routes>
