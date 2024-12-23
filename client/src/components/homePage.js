@@ -58,7 +58,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 const HomePage = () => {
   return (
-    <div>
+    
     <Container maxWidth="lg" sx={{ textAlign: 'center', py: 5 }}>
       <Typography variant="h2" component="h1" color="success" gutterBottom>
         Welcome to the Clinic Management System
@@ -153,31 +153,7 @@ const HomePage = () => {
       </Box>
   
     </Container>
-    <div className="container">
-     <div className='row'>
-      <div className='col-lg-6 col-xl-6 col-sm-12 col-12'>
-        <div className="architectural-story" style="visibility:visible; opacity:0">
-      <h1 class="content wow move-up ">"10+ year of Experience" <br/> "Experienced personalised & Compassinate care" </h1>
-       </div>
-     {/* <div className='col-lg-6 col-xl-6 col-sm-12 col-12'> */}
-        <div className='content'>
-          <p class="text-white"> Our team of experts ensure your health is our top priority </p>
-        </div>
-        </div>
-      {/* </div> */}
-    <div className='col-lg-7 col-xl-7 col-md-12 col-12'> 
-      <div className='spekers-number-wrap container-grid'>
-     <div className='container-style-2'>
-      
-     </div>
-     <div className='container-style-2'></div>
-     <div className='container-style-2'></div>
-
-      </div>
-    </div>
-     </div>
-    </div>
-</div>
+    
   );
 };
 
