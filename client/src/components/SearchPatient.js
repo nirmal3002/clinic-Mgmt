@@ -47,16 +47,16 @@ const SearchPatient = () => {
     }, []);
     const applyFilters = () => {
         let result = [...patients];
-  
-    // Apply search
-    if (filters.searchTerm) {
-        result = result.filter(patient => {
-            const searchValue = patient[filters.searchField]?.toString().toLowerCase();
-            return searchValue?.includes(filters.searchTerm.toLowerCase());
-        });
-        setFilteredPatients(result);
-    };
-}
+
+        // Apply search
+        if (filters.searchTerm) {
+            result = result.filter(patient => {
+                const searchValue = patient[filters.searchField]?.toString().toLowerCase();
+                return searchValue?.includes(filters.searchTerm.toLowerCase());
+            });
+            setFilteredPatients(result);
+        };
+    }
     useEffect(() => {
         applyFilters();
     }, [filters]);
@@ -114,8 +114,8 @@ const SearchPatient = () => {
                 </CardContent>
             </Card>
 
-             {/* Results Section */}
-             <Box sx={{ mb: 2 }}>
+            {/* Results Section */}
+            <Box sx={{ mb: 2 }}>
                 <Typography variant="body1" color="text.secondary">
                     Found {filteredPatients.length} patients
                 </Typography>
@@ -123,11 +123,13 @@ const SearchPatient = () => {
 
             {/* Books Grid */}
             <Grid container spacing={3}>
-                {filteredPatients.map((patient) => (
+                {filteredPatients.map((patient, index) => {
+                return (
                     <Grid item xs={12} sm={6} md={4} key={patient._id}>
-                        <PatientCard book={patient} />
+                     <PatientCard patient={patient} />
                     </Grid>
-                ))}
+                );
+                })}
             </Grid>
         </Container>
 
