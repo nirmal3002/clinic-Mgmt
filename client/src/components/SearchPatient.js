@@ -35,7 +35,7 @@ const SearchPatient = () => {
             .then(res => {
                 setPatients(res.data);
                 setFilteredPatients(res.data);
-                // Extract unique publishers
+                // Extract unique patients
                 const uniqueNames = [...new Set(res.data.map(patient => patient.name))];
                 setNames(uniqueNames);
                 setLoading(false);
@@ -54,9 +54,31 @@ const SearchPatient = () => {
                 const searchValue = patient[filters.searchField]?.toString().toLowerCase();
                 return searchValue?.includes(filters.searchTerm.toLowerCase());
             });
+        }
+        // Apply patientname
+        if (filters.name !== 'all') {
+            result = result.filter(patient=> patient.name === filters.name);
+        }
+
+
+            // Apply sorting
+            result.sort((a, b) => {
+                let valueA = a[filters.sortBy]?.toString().toLowerCase();
+                let valueB = b[filters.sortBy]?.toString().toLowerCase();
+    
+                if (filters.sortBy === 'age') {
+                    valueA = new Date(a.age);
+                    valueB = new Date(b.age);
+                }
+    
+                if (valueA < valueB) return filters.sortOrder === 'asc' ? -1 : 1;
+                if (valueA > valueB) return filters.sortOrder === 'asc' ? 1 : -1;
+                return 0;
+            });
+ 
+       
             setFilteredPatients(result);
-        };
-    }
+    };
     useEffect(() => {
         applyFilters();
     }, [filters]);
@@ -99,6 +121,53 @@ const SearchPatient = () => {
                                 }}
                             />
                         </Grid>
+                              {/* Search By Dropdown */}
+                              <Grid item xs={12} md={2}>
+                            <FormControl fullWidth>
+                                <InputLabel>Search By</InputLabel>
+                                <Select
+                                    value={filters.searchField}
+                                    label="Search By"
+                                    onChange={(e) => setFilters({ ...filters, searchField: e.target.value })}
+                                >
+                                    <MenuItem value="name">name</MenuItem>
+                                    <MenuItem value="age">age</MenuItem>
+                                    <MenuItem value="contact_number">contact_number</MenuItem>
+                                    <MenuItem value="admit_date">admit_date</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Grid>
+                        {/* Sort By Dropdown */}
+                        <Grid item xs={12} md={2}>
+                            <FormControl fullWidth>
+                                <InputLabel>Sort By</InputLabel>
+                                <Select
+                                    value={filters.sortBy}
+                                    label="Sort By"
+                                    onChange={(e) => setFilters({ ...filters, sortBy: e.target.value })}
+                                >
+                                    <MenuItem value="name">name</MenuItem>
+                                    <MenuItem value="age">age</MenuItem>
+                                    <MenuItem value="admit_date">admit_date</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Grid>
+                      
+                        {/* Sort Order */}
+                        <Grid item xs={12} md={2}>
+                            <FormControl fullWidth>
+                                <InputLabel>Order</InputLabel>
+                                <Select
+                                    value={filters.sortOrder}
+                                    label="Order"
+                                    onChange={(e) => setFilters({ ...filters, sortOrder: e.target.value })}
+                                >
+                                    <MenuItem value="asc">Ascending</MenuItem>
+                                    <MenuItem value="desc">Descending</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Grid>
+                        
                         <Grid item xs={12}>
                             <Box display="flex" justifyContent="center">
                                 <Button
