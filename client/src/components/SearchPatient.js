@@ -201,6 +201,7 @@ const SearchPatient = () => {
                 })}
             </Grid>
         </Container>
+        
 
     );
 };
