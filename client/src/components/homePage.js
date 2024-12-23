@@ -151,8 +151,7 @@ const HomePage = () => {
           </Grid>
         </Grid>
       </Box>
-  
-    </Container>
+   </Container>
     
   );
 };
