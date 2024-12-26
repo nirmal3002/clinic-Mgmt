@@ -3,6 +3,18 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Slide, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import {
+  TextField,
+  Button,
+  Container,
+  Typography,
+  Grid,
+  Box,
+  MenuItem,
+  Select,
+  InputLabel,
+  FormControl,
+} from '@mui/material';
 
 const CreatePatient = () => {
   const navigate = useNavigate();
@@ -22,10 +34,9 @@ const CreatePatient = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
- 
-    console.log(patient)
-    axios.post('https://clinic-management-0q8q.onrender.com/api/clinics', patient)
-    .then((res) => {
+    axios
+      .post('https://clinic-management-0q8q.onrender.com/api/clinics', patient)
+      .then(() => {
         setPatient({
           name: '',
           age: '',
@@ -38,24 +49,16 @@ const CreatePatient = () => {
         toast.success('Patient added successfully!', {
           position: 'top-right',
           autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
           theme: 'dark',
           transition: Slide,
         });
-       
+        navigate('/');
       })
       .catch((err) => {
         console.error('Error in creating patient:', err);
         toast.error('Something went wrong, try again!', {
           position: 'top-right',
           autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
           theme: 'dark',
           transition: Slide,
         });
@@ -63,146 +66,116 @@ const CreatePatient = () => {
   };
 
   return (
-    <div className="CreatePatient">
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        transition={Slide}
-      />
-
-      <div className="container">
-        <div className="row">
-          <div className="col-md-8 m-auto">
-            <br />
-            <Link to="/" className="btn btn-outline-warning float-left">
-              Show Patient List
-            </Link>
-          </div>
-          <div className="col-md-8 m-auto">
-            <h1 className="display-4 text-center">Add Patient</h1>
-            <p className="lead text-center">Create new patient details</p>
-            <form noValidate onSubmit={onSubmit}>
-              <div className="form-group">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  value={patient.name}
-                  onChange={onChange}
-                  required
-                  className="input-field"
-                />
-              </div>
-              <br />
-
-              <div className="form-group">
-                <input
-                  type="number"
-                  name="age"
-                  placeholder="Age"
-                  value={patient.age}
-                  onChange={onChange}
-                  required
-                  className="input-field"
-                />
-              </div>
-              <br />
-
-              <div className="form-group">
-                <select
-                  name="gender"
-                  value={patient.gender}
-                  onChange={onChange}
-                  required
-                  className="input-field"
-                >
-                  <option value="" disabled>
-                    Select Gender
-                  </option>
-                  <option value="male">male</option>
-                  <option value="female">female</option>
-                  <option value="other">other</option>
-                </select>
-              </div>
-              <br />
-
-              <div className="form-group">
-                <input
-                  type="string"
-                  name="contact_number"
-                  placeholder="Contact Number"
-                  value={patient.contact_number}
-                  onChange={onChange}
-                  required
-                  className="input-field"
-                />
-              </div>
-              <br />
-
-              <div className="form-group">
-                <select
-                  name="admit"
-                  value={patient.admit}
-                  onChange={onChange}
-                  required
-                  className="input-field"
-                >
-                  <option value="" disabled>
-                    Admited before ?
-                  </option>
-                  <option value="true">Yes</option>
-                  <option value="false">No</option>
-                </select>
-              </div>
-              <br />
-
-              <div className="form-group">
-                <input
-                  type="date"
-                  name="admit_date"
-                  placeholder="Enter admit date"
-                  value={patient.admit_date}
-                  onChange={onChange}
-                  required
-                  className="input-field"
-                />
-              </div>
-              <br />
-
-              <div className="form-group">
-                <input
-                  type="text"
-                  name="medical_history"
-                  placeholder="Medical History"
-                  value={patient.medical_history}
-                  onChange={onChange}
-                  required
-                  className="input-field"
-                />
-              </div>
-              <br />
-
-              <div className="button-group">
-                <button type="submit" className="btn btn-add">
-                  Add Patient
-                </button>
-                <button type="button" className="btn btn-cancel" onClick={() => navigate('/')}>
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Container maxWidth="sm" sx={{ py: 4 }}>
+      <ToastContainer />
+      <Typography variant="h4" component="h1" color="primary" gutterBottom align="center">
+        Add New Patient
+      </Typography>
+      <Typography variant="subtitle1" align="center" gutterBottom>
+        Fill in the details below to create a new patient record.
+      </Typography>
+      <Box component="form" noValidate onSubmit={onSubmit} sx={{ mt: 2 }}>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              name="name"
+              label="Name"
+              fullWidth
+              required
+              value={patient.name}
+              onChange={onChange}
+              variant="outlined"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              name="age"
+              label="Age"
+              type="number"
+              fullWidth
+              required
+              value={patient.age}
+              onChange={onChange}
+              variant="outlined"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <FormControl fullWidth required>
+              <InputLabel>Gender</InputLabel>
+              <Select
+                name="gender"
+                value={patient.gender}
+                onChange={onChange}
+                variant="outlined"
+              >
+                <MenuItem value="male">Male</MenuItem>
+                <MenuItem value="female">Female</MenuItem>
+                <MenuItem value="other">Other</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              name="contact_number"
+              label="Contact Number"
+              fullWidth
+              required
+              value={patient.contact_number}
+              onChange={onChange}
+              variant="outlined"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <FormControl fullWidth required>
+              <InputLabel>Admitted Before?</InputLabel>
+              <Select
+                name="admit"
+                value={patient.admit}
+                onChange={onChange}
+                variant="outlined"
+              >
+                <MenuItem value="true">Yes</MenuItem>
+                <MenuItem value="false">No</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              name="admit_date"
+              label="Admit Date"
+              type="date"
+              fullWidth
+              required
+              value={patient.admit_date}
+              onChange={onChange}
+              variant="outlined"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              name="medical_history"
+              label="Medical History"
+              fullWidth
+              required
+              value={patient.medical_history}
+              onChange={onChange}
+              variant="outlined"
+            />
+          </Grid>
+          <Grid item xs={12} display="flex" justifyContent="space-between">
+            <Button type="submit" variant="contained" color="primary">
+              Add Patient
+            </Button>
+            <Button variant="outlined" color="secondary" onClick={() => navigate('/')}>
+              Cancel
+            </Button>
+          </Grid>
+        </Grid>
+      </Box>
+    </Container>
   );
 };
 
