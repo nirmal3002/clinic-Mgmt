@@ -1,12 +1,51 @@
-import React from 'react';
+// import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Typography, Button, Box, Grid, Paper } from '@mui/material';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import SearchIcon from '@mui/icons-material/Search';
+import { Container, Typography, Button, Box, Grid, Paper,Card,CardContent,CircularProgress} from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
 import DownloadIcon from '@mui/icons-material/Download';
-import PeopleIcon from '@mui/icons-material/People';
-
+import GroupIcon from '@mui/icons-material/Group';
+import PersonIcon from '@mui/icons-material/Person';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import QrCodeIcon from '@mui/icons-material/QrCode';
+import SearchIcon from '@mui/icons-material/Search';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import axios from 'axios';
 const HomePage = () => {
+  const [stats, setStats] = useState({
+    totalpatients: 0,
+    uniqueNames: 0,
+    recentPatient: null
+  });
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    axios.get( `https://clinic-management-0q8q.onrender.com/api/clinics`)
+      .then(res => {
+        const patients = res.data;
+        const  uniqueNames = new Set(patients.map(patient => patient.author)).size;
+        const recentPatient = patients.sort((a, b) =>
+          new Date(b. admit_date) - new Date(a. admit_date)
+        )[0];
+        setStats({
+          totalpatients: patients.length,
+          uniqueNames,
+          recentPatient
+        });
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error fetching stats:', err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" minHeight="60vh">
+        <CircularProgress />
+      </Box>
+    );
+  }
   return (
     <Box
       sx={{
@@ -33,6 +72,7 @@ const HomePage = () => {
           backgroundColor: 'rgba(0, 0, 0, 0.6)', // Dark overlay
         }}
       />
+
 
       {/* Content */}
       <Container
@@ -63,6 +103,50 @@ const HomePage = () => {
         Manage patients efficiently and effectively with our intuitive platform.
       </Typography>
     </Box>
+
+    <Grid container spacing={4} mb={6}>
+          <Grid item xs={12} md={4}>
+            <Card sx={{ height: '100%', display: 'flex', alignItems: 'center' }}>
+              <CardContent sx={{ textAlign: 'center', width: '100%' }}>
+                <GroupIcon color="primary" sx={{ fontSize: 40, mb: 2 }} />
+                <Typography variant="h4" gutterBottom>
+                  {stats.totalpatients}
+                </Typography>
+                <Typography variant="subtitle1" color="text.secondary">
+                  Total Patients
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} md={4}>
+            <Card sx={{ height: '100%', display: 'flex', alignItems: 'center' }}>
+              <CardContent sx={{ textAlign: 'center', width: '100%' }}>
+                <PersonIcon color="primary" sx={{ fontSize: 40, mb: 2 }} />
+                <Typography variant="h4" gutterBottom>
+                  {stats.uniqueNames}
+                </Typography>
+                <Typography variant="subtitle1" color="text.secondary">
+                  Unique Patient Name
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} md={4}>
+            <Card sx={{ height: '100%', display: 'flex', alignItems: 'center' }}>
+              <CardContent sx={{ textAlign: 'center', width: '100%' }}>
+                <CalendarTodayIcon color="primary" sx={{ fontSize: 40, mb: 2 }} />
+                <Typography variant="h4" gutterBottom>
+                  Latest Book
+                </Typography>
+                <Typography variant="subtitle1" color="text.secondary">
+                  {stats.recentPatient?.Name || 'No books yet'}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
         {/* Features Section */}
         <Box sx={{ my: 6 }}>
           <Typography
@@ -96,7 +180,7 @@ const HomePage = () => {
                   variant="contained"
                   fullWidth
                   size="large"
-                  startIcon={<PeopleIcon />}
+                  startIcon={<GroupIcon/>}
                 >
                   View Patients
                 </Button>
@@ -124,6 +208,7 @@ const HomePage = () => {
                 </Button>
               </Paper>
             </Grid>
+            
             <Grid item xs={12} sm={6} md={4}>
               <Paper
                 elevation={3}
@@ -146,6 +231,53 @@ const HomePage = () => {
                 </Button>
               </Paper>
             </Grid>
+
+            <Grid item xs={12} sm={6} md={4}>
+              <Paper
+                elevation={3}
+                sx={{
+                  p: 2,
+                  borderRadius: 2,
+                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                }}
+              >
+                <Button
+                  component={Link}
+                  to="/add"
+                  color="primary"
+                  variant="contained"
+                  fullWidth
+                  size="large"
+                  startIcon={<AddIcon/>}
+                >
+                  Add Patients 
+                </Button>
+              </Paper>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={4}>
+              <Paper
+                elevation={3}
+                sx={{
+                  p: 2,
+                  borderRadius: 2,
+                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                }}
+              >
+                <Button
+                  component={Link}
+                  to="/export"
+                  color="primary"
+                  variant="contained"
+                  fullWidth
+                  size="large"
+                  startIcon={<QrCodeIcon/>}
+                >
+                 Show Qr Code
+                </Button>
+              </Paper>
+            </Grid>
+
           </Grid>
         </Box>
 
