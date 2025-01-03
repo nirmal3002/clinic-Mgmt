@@ -51,6 +51,7 @@ const solarizedTheme = createTheme({
       secondary: solarizedColors.subtle,
     },
   },
+  
   typography: {
     fontFamily: '"Fira Sans", "Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
