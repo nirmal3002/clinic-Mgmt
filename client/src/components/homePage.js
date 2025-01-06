@@ -561,7 +561,7 @@ const HomePage = () => {
               {
                 label: 'Show QR Code',
                 icon: <QrCodeIcon />,
-                link: '/qr',
+                link: '/scan',
                 color: 'linear-gradient(45deg, #FFC107 30%, #FFD54F 90%)', // Elegant purple shades
               },
             

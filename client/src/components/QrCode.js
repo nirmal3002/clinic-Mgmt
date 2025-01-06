@@ -15,9 +15,9 @@ import axios from 'axios';
 const QRCodePage = () => {
     const [patients, setPatients] = useState([]);
     const [loading, setLoading] = useState(true);
-    const baseUrl = 'https://clinic-management-0q8q.onrender.com/api/clinics';
+    const baseUrl = 'https://clinic-management-0q8q.onrender.com/detail/';
     useEffect(() => {
-        axios.get('/api/patients')
+        axios.get('https://clinic-management-0q8q.onrender.com/api/clinics')
           .then(res => {
             setPatients(res.data);
             setLoading(false);
@@ -27,7 +27,7 @@ const QRCodePage = () => {
             setLoading(false);
           });
       }, []);
-      const downloadQR = (patientId, patientname) => {
+      const downloadQR = (patientId,patientName) => {
         const canvas = document.createElement("canvas");
         const svg = document.getElementById(`qr-${patientId}`);
         const serializer = new XMLSerializer();
@@ -42,7 +42,7 @@ const QRCodePage = () => {
         ctx.drawImage(img, 0, 0);
         
         const a = document.createElement('a');
-        a.download = `QR-${bookTitle.replace(/\s+/g, '-')}.png`;
+        a.download = `QR-${patientName.replace(/\s+/g, '-')}.png`;
         a.href = canvas.toDataURL('image/png');
         a.click();
       };

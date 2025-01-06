@@ -17,6 +17,7 @@
     "jspdf-autotable": "^3.8.4",
     "material": "^0.9.20",
     "notistack": "^3.0.1",
+    "qrcode.react": "^4.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
