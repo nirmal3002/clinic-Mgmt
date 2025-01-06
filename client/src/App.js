@@ -34,7 +34,7 @@ const App = () => {
                         <Route path="/export" element={<ExportPage />} />
                         <Route path="/search" element={<SearchPatient />} />
                         <Route path="/" element={<HomePage />} />
-                        <Route path="/qr-codes" element={<QRCodePage />} />
+                        <Route path="/qr" element={<QRCodePage />} />
 
                     </Routes>
                 </div>
