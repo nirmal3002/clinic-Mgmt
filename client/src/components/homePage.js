@@ -208,7 +208,7 @@
 //                 </Button>
 //               </Paper>
 //             </Grid>
-            
+
 //             <Grid item xs={12} sm={6} md={4}>
 //               <Paper
 //                 elevation={3}
@@ -494,77 +494,153 @@ const HomePage = () => {
         </Box>
 
         {/* Stats Section */}
-        <Grid container spacing={4} mb={6}>
+        <Grid container spacing={4} mb={6} sx={{ px: 2 }}>
           <Grid item xs={12} md={4}>
-            <Card sx={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', color: 'white' }}>
-              <CardContent textAlign="center">
-                <GroupIcon sx={{ fontSize: 50, mb: 2 }} />
-                <Typography variant="h4">{stats.totalpatients}</Typography>
-                <Typography variant="subtitle1">Total Patients</Typography>
+            <Card
+              sx={{
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                color: 'white',
+                borderRadius: 3,
+                boxShadow: '0 4px 10px rgba(0, 0, 0, 0.3)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                  boxShadow: '0 6px 15px rgba(0, 0, 0, 0.5)',
+                },
+              }}
+            >
+              <CardContent sx={{ textAlign: 'center', py: 4 }}>
+                <GroupIcon
+                  sx={{
+                    fontSize: 60,
+                    mb: 2,
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    background: 'linear-gradient(145deg, #29B6F6, #0288D1)',
+                    borderRadius: '50%',
+                    padding: 2,
+                  }}
+                />
+                <Typography variant="h4" sx={{ fontWeight: 700, letterSpacing: 1 }}>
+                  {stats.totalpatients}
+                </Typography>
+                <Typography variant="subtitle1" sx={{ opacity: 0.8 }}>
+                  Total Patients
+                </Typography>
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Card sx={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', color: 'white' }}>
-              <CardContent textAlign="center">
-                <PersonIcon sx={{ fontSize: 50, mb: 2 }} />
-                <Typography variant="h4">{stats.uniqueNames}</Typography>
-                <Typography variant="subtitle1">Unique Patient Names</Typography>
+            <Card
+              sx={{
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                color: 'white',
+                borderRadius: 3,
+                boxShadow: '0 4px 10px rgba(0, 0, 0, 0.3)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                  boxShadow: '0 6px 15px rgba(0, 0, 0, 0.5)',
+                },
+              }}
+            >
+              <CardContent sx={{ textAlign: 'center', py: 4 }}>
+                <PersonIcon
+                  sx={{
+                    fontSize: 60,
+                    mb: 2,
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    background: 'linear-gradient(145deg, #66BB6A, #388E3C)',
+                    borderRadius: '50%',
+                    padding: 2,
+                  }}
+                />
+                <Typography variant="h4" sx={{ fontWeight: 700, letterSpacing: 1 }}>
+                  {stats.uniqueNames}
+                </Typography>
+                <Typography variant="subtitle1" sx={{ opacity: 0.8 }}>
+                  Unique Patient Names
+                </Typography>
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Card sx={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', color: 'white' }}>
-              <CardContent textAlign="center">
-                <CalendarTodayIcon sx={{ fontSize: 50, mb: 2 }} />
-                <Typography variant="h4">
+            <Card
+              sx={{
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                color: 'white',
+                borderRadius: 3,
+                boxShadow: '0 4px 10px rgba(0, 0, 0, 0.3)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                  boxShadow: '0 6px 15px rgba(0, 0, 0, 0.5)',
+                },
+              }}
+            >
+              <CardContent sx={{ textAlign: 'center', py: 4 }}>
+                <CalendarTodayIcon
+                  sx={{
+                    fontSize: 60,
+                    mb: 2,
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    background: 'linear-gradient(145deg, #FFD54F, #FFCA28)',
+                    borderRadius: '50%',
+                    padding: 2,
+                  }}
+                />
+                <Typography variant="h4" sx={{ fontWeight: 700, letterSpacing: 1 }}>
                   {stats.recentPatient?.Name || 'No recent patients'}
                 </Typography>
-                <Typography variant="subtitle1">Most Recent Patient</Typography>
+                <Typography variant="subtitle1" sx={{ opacity: 0.8 }}>
+                  Most Recent Patient
+                </Typography>
               </CardContent>
             </Card>
           </Grid>
         </Grid>
 
-       {/* Features Section */}
-       <Box textAlign="center" mb={6}>
+        {/* Features Section */}
+        <Box textAlign="center" mb={6}>
           <Typography variant="h4" gutterBottom>
             Explore Features
           </Typography>
           <Grid container spacing={4} justifyContent="center">
-            {[
-               {
-                label: 'Add Patient',
-                icon: <AddIcon />,
-                link: '/add',
-                color: 'linear-gradient(45deg, #FF5722 30%, #FF7043 90%)', // Warm orange shades
-              },
-               {
-                label: 'View Patients',
-                icon: <GroupIcon />,
-                link: '/list',
-                color: 'linear-gradient(45deg, #0288D1 30%, #03A9F4 90%)', // Cool blue shades
-              },
-              {
-                label: 'Search Patient',
-                icon: <SearchIcon />,
-                link: '/search',
-                color: 'linear-gradient(45deg, #4CAF50 30%, #8BC34A 90%)', // Soft green shades
-              },
-             
-              {
-                label: 'Export List',
-                icon: <DownloadIcon />,
-                link: '/export',
-                color: 'linear-gradient(45deg, #FFC107 30%, #FFD54F 90%)', // Vibrant yellow shades
-              },
-              {
-                label: 'Show QR Code',
-                icon: <QrCodeIcon />,
-                link: '/scan',
-                color: 'linear-gradient(45deg, #FFC107 30%, #FFD54F 90%)', // Elegant purple shades
-              },
-            
+            {[{
+              label: 'Add Patient',
+              icon: <AddIcon />,
+              link: '/add',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',              
+              style: { border: '2px solid #FFDAB9' }, // Peach border
+            },
+            {
+              label: 'View Patients',
+              icon: <GroupIcon />,
+              link: '/list',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              style: { border: '2px solid #FFDAB9' }, // Peach border
+            },
+            {
+              label: 'Search Patient',
+              icon: <SearchIcon />,
+              link: '/search',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              style: { border: '2px solid #FFDAB9' }, // Peach border
+            },
+            {
+              label: 'Export List',
+              icon: <DownloadIcon />,
+              link: '/export',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              style: { border: '2px solid #FFDAB9' }, // Peach border
+            },
+            {
+              label: 'Show QR Code',
+              icon: <QrCodeIcon />,
+              link: '/scan',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              style: { border: '2px solid #FFDAB9' }, // Peach border
+            },
+
             ].map((feature, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <Paper
@@ -610,13 +686,13 @@ const HomePage = () => {
                 label: 'GitHub',
                 icon: <GitHubIcon />,
                 link: 'https://github.com/nirmal3002/clinic-Mgmt',
-                color: 'linear-gradient(45deg, #AB47BC 30%, #8E24AA 90%)',
+                backgroundColor: '#ffc3a0',
               },
               {
                 label: 'View Patients',
                 icon: <NotesIcon />,
                 link: 'https://docs.google.com/document/d/1951CLEB80bJ5kHb3fJa355BsURLlvO9wbkWmdBRDtbk/edit?tab=t.0',
-                color: 'linear-gradient(45deg, #AB47BC 30%, #8E24AA 90%)',
+                Color: '#ffc3a0',
               },
             ].map((externalLink, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
