@@ -40,7 +40,7 @@ const HomePage = () => {
 
   useEffect(() => {
     axios
-      .get('${URL}/api/clinics')
+      .get(`${URL}/api/clinics`)
       .then((res) => {
         const patients = res.data;
         const uniqueNames = new Set(patients.map((patient) => patient.author)).size;
