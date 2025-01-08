@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+// const URL=process.env.REACT_API_AXIOS_URL;
+
 const DeletePerson = ({ id, onDelete }) => {
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete this patient?')) {

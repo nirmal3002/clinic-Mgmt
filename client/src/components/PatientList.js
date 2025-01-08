@@ -22,9 +22,11 @@ const ShowPersonList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const patientsPerPage = 6; // Patients displayed per page
 
+  // const URL=process.env.REACT_API_AXIOS_URL;
+
   useEffect(() => {
     axios
-      .get('https://clinic-management-0q8q.onrender.com/api/clinics')
+      .get(`https://clinic-management-0q8q.onrender.com/api/clinics`)
       .then((res) => {
         setPatients(res.data);
         setFilteredPatients(res.data);

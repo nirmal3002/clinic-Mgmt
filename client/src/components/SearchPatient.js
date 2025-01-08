@@ -23,6 +23,8 @@ const SearchPatient = () => {
     const [filteredPatients, setFilteredPatients] = useState([]);
     const [loading, setLoading] = useState(true);
     const [names, setNames] = useState([]);
+    // const URL=process.env.REACT_API_AXIOS_URL;
+
     const [filters, setFilters] = useState({
         searchTerm: '',
         searchField: 'name',
@@ -31,7 +33,7 @@ const SearchPatient = () => {
         name: 'all'
     });
     useEffect(() => {
-        axios.get('https://clinic-management-0q8q.onrender.com/api/clinics')
+        axios.get(`https://clinic-management-0q8q.onrender.com/api/clinics`)
             .then(res => {
                 setPatients(res.data);
                 setFilteredPatients(res.data);

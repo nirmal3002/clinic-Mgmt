@@ -38,6 +38,8 @@ const DetailsPatient = () => {
   const { id } = useParams(); // Patient ID from URL
   const navigate = useNavigate();
 
+  // const URL=process.env.REACT_API_AXIOS_URL;
+
   // Fetch patient details
   useEffect(() => {
     const fetchPatient = async () => {

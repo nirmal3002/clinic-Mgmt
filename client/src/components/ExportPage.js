@@ -10,11 +10,13 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import * as XLSX from 'xlsx';
 
+// const URL=process.env.REACT_API_AXIOS_URL;
+
 const ExportPage = () => {
   const [patient, setPatient] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    axios.get('https://clinic-management-0q8q.onrender.com/api/clinics')
+    axios.get(`https://clinic-management-0q8q.onrender.com/api/clinics`)
       .then(res => {
         setPatient(res.data);
         setLoading(false);
