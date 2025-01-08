@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-// const URL=process.env.REACT_API_AXIOS_URL;
+const URL = process.env.REACT_APP_API_URL;
 
 const DeletePerson = ({ id, onDelete }) => {
   const handleDelete = async () => {
@@ -9,7 +9,7 @@ const DeletePerson = ({ id, onDelete }) => {
       try {
         // Replace the endpoint with your actual API endpoint
         const response = await axios.delete(
-          `https://clinic-management-0q8q.onrender.com/api/clinics/${id}`
+          `${URL}/api/clinics/${id}`
         );
         if (response.status === 200 || response.status === 204) {
           onDelete(id); // Inform parent component about successful deletion

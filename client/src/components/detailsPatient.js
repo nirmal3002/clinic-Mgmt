@@ -38,14 +38,14 @@ const DetailsPatient = () => {
   const { id } = useParams(); // Patient ID from URL
   const navigate = useNavigate();
 
-  // const URL=process.env.REACT_API_AXIOS_URL;
+  const URL = process.env.REACT_APP_API_URL; // Access environment variable
 
   // Fetch patient details
   useEffect(() => {
     const fetchPatient = async () => {
       try {
         const response = await axios.get(
-          `https://clinic-management-0q8q.onrender.com/api/clinics/${id}`
+          `${URL}/api/clinics/${id}`
         );
         setPatient(response.data);
       } catch (err) {

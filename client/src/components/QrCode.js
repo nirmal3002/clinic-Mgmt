@@ -15,11 +15,11 @@ import axios from 'axios';
 const QRCodePage = () => {
     const [patients, setPatients] = useState([]);
     const [loading, setLoading] = useState(true);
-    // const URL=process.env.REACT_API_AXIOS_URL;
+    const URL = process.env.REACT_APP_API_URL; // Access environment variable
 
-    const baseUrl = `https://clinic-management-0q8q.onrender.com/detail/`;
+    const baseUrl = `${URL}/detail/`;
     useEffect(() => {
-        axios.get(`https://clinic-management-0q8q.onrender.com/api/clinics`)
+        axios.get(`${URL}/api/clinics`)
           .then(res => {
             setPatients(res.data);
             setLoading(false);

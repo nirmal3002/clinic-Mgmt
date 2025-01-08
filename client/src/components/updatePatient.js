@@ -7,7 +7,6 @@ import axios from 'axios';
 
 // import '../styles/PersonEdit.css'; // Component-specific styles
 
-// const API_URL = process.env.REACT_APP_API_URL;
 
 const Patientupdate= () => {
 
@@ -16,10 +15,13 @@ const navigate = useNavigate();
 const [patient, setPatient] = useState({ name: '', age: '' , contact_number: '' , gender: '' });
 // const [showNotification,setShowNotification] = useState(null)
 
+
+const URL = process.env.REACT_APP_API_URL; // Access environment variable
+
   useEffect(() => {
     const fetchPatient = async () => {
       try {
-        const response = await axios.get(`https://clinic-management-0q8q.onrender.com/api/clinics/${id}`);
+        const response = await axios.get(`${URL}/api/clinics/${id}`);
         setPatient(response.data);
       } catch (error) {
         console.error('Error fetching person:', error);

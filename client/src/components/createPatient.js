@@ -27,7 +27,9 @@ const CreatePatient = () => {
     admit_date: '',
     medical_history: '',
   });
-  // const URL=process.env.REACT_API_AXIOS_URL;
+         
+const URL = process.env.REACT_APP_API_URL;
+// Set base URL for Axios
 
   const onChange = (e) => {
     setPatient({ ...patient, [e.target.name]: e.target.value });
@@ -36,7 +38,7 @@ const CreatePatient = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`https://clinic-management-0q8q.onrender.com/api/clinics`, patient)
+      .post(`${URL}/api/clinics`, patient)
       .then(() => {
         setPatient({
           name: '',

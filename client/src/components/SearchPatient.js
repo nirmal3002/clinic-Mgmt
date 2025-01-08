@@ -23,7 +23,8 @@ const SearchPatient = () => {
     const [filteredPatients, setFilteredPatients] = useState([]);
     const [loading, setLoading] = useState(true);
     const [names, setNames] = useState([]);
-    // const URL=process.env.REACT_API_AXIOS_URL;
+
+    const URL = process.env.REACT_APP_API_URL; // Access environment variable
 
     const [filters, setFilters] = useState({
         searchTerm: '',
@@ -33,7 +34,7 @@ const SearchPatient = () => {
         name: 'all'
     });
     useEffect(() => {
-        axios.get(`https://clinic-management-0q8q.onrender.com/api/clinics`)
+        axios.get(`${URL}/api/clinics`)
             .then(res => {
                 setPatients(res.data);
                 setFilteredPatients(res.data);
