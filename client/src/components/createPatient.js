@@ -28,8 +28,7 @@ const CreatePatient = () => {
     medical_history: '',
   });
          
-const URL = process.env.REACT_APP_API_URL;
-// Set base URL for Axios
+  const URL = process.env.REACT_APP_API_URL; // Access environment variable
 
   const onChange = (e) => {
     setPatient({ ...patient, [e.target.name]: e.target.value });
