@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 import PatientList from './components/PatientList';
 import PatientEdit from './components/updatePatient';
 import HomePage from './components/homePage';
@@ -8,6 +10,7 @@ import Navbar from './components/navbar';
 import ExportPage from './components/ExportPage'
 import SearchPatient from './components/SearchPatient';
 import QRCodePage from './components/QrCode';
+
 
 import solarizedTheme from './container/Theme';
 import { ThemeProvider } from '@mui/material/styles';
@@ -34,6 +37,8 @@ const App = () => {
                         <Route path="/search" element={<SearchPatient />} />
                         <Route path="/" element={<HomePage />} />
                         <Route path="/scan" element={<QRCodePage />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/signup" element={<Signup />} />
 
                     </Routes>
                 </div>

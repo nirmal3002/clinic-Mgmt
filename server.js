@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 require("dotenv").config( { path: "./config.env" } )
 const path = require('path');
 
+const authRoutes = require("./routes/auth"); // Path to your auth route file
+
 
 const connectDB = require('./config/db');
 const clinicRoutes = require('./routes/clinicroutes');
@@ -16,11 +18,13 @@ const app = express()
 app.use(express.json());
 // app.use(cors());
 const corsOptions = {
-      origin: ['https://clinic-management-0q8q.onrender.com',`https://5000-nirmal3002-clinicmgmt-s75y7ttlzli.ws-us117.gitpod.io`] ,// Replace with your frontend origin
+      origin: ['https://clinic-management-0q8q.onrender.com',`https://5000-nirmal3002-clinicmgmt-9puulidkwf6.ws-us117.gitpod.io`] ,// Replace with your frontend origin
       methods: ['GET', 'POST', 'PUT', 'DELETE'],
       credentials: true, // Allow cookies if needed
     };
 app.use(cors(corsOptions));
+app.use("/api/auth", authRoutes); // This sets the base path for the auth routes
+
 
 app.get("/home", (req, res) => {
     res.send("HomePage");
