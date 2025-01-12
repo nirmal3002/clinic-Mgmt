@@ -7,9 +7,11 @@ import PatientEdit from './components/updatePatient';
 import HomePage from './components/homePage';
 import Footer from './components/footer';
 import Navbar from './components/navbar';
+import Dashboard from "./components/Dashboard";
 import ExportPage from './components/ExportPage'
 import SearchPatient from './components/SearchPatient';
 import QRCodePage from './components/QrCode';
+import ProtectedRoute from "./components/ProtectedRoute"; // Import ProtectedRoute
 
 
 import solarizedTheme from './container/Theme';
@@ -39,7 +41,15 @@ const App = () => {
                         <Route path="/scan" element={<QRCodePage />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<Signup />} />
-
+    {/* Protected route */}
+    <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
                     </Routes>
                 </div>
                 <Footer />

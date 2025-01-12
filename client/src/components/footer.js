@@ -1,7 +1,4 @@
 import React from 'react';
-// import { Box, Typography } from '@mui/material';
-// import CallIcon from '@mui/icons-material/Call';
-// import FacebookIcon from '@mui/icons-material/Facebook';
 import { GitHub, LinkedIn, Instagram, Facebook } from '@mui/icons-material';
 import { Box, Typography, Grid, Divider, Link, Container } from '@mui/material';
 
@@ -58,7 +55,7 @@ const Footer = () => (
             <Box display="flex" justifyContent="center" gap={2}>
               <Link
                 component="a"
-                href="https://github.com/88chinu/clinicManagement"
+                href="https://github.com/nirmal3002/clinic-Mgmt"
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{
