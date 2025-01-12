@@ -2,23 +2,23 @@
 import { createTheme } from '@mui/material/styles';
 
 const solarizedColors = {
-  base: '#002b36',
-  surface: '#073642',
-  overlay: '#586e75',
-  muted: '#657b83',
-  subtle: '#839496',
-  text: '#fdf6e3',
-  love: '#dc322f',
-  gold: '#b58900',
-  green: '#859900',
-  cyan: '#2aa198',
-  blue: '#268bd2',
-  magenta: '#d33682',
-  violet: '#6c71c4',
-  highlightLow: '#073642',
-  highlightMed: '#586e75',
-  highlightHigh: '#93a1a1',
-  skin:'#ffc3a0',
+  base: '#001f3f', // Deep navy blue for the background
+  surface: '#011627', // Dark blue-gray for cards and surfaces
+  overlay: '#22334c', // Medium blue-gray for overlays
+  muted: '#33475b', // Muted blue-gray
+  subtle: '#728aa1', // Subtle lighter gray-blue
+  text: '#d1e3f0', // Light grayish-white for text
+  love: '#e63946', // Vibrant red for errors or critical elements
+  gold: '#ffb703', // Bright gold for warnings
+  green: '#2a9d8f', // Sea green for success
+  cyan: '#00bcd4', // Bright cyan for secondary accents
+  blue: '#0077b6', // Vibrant blue for primary actions
+  magenta: '#9d4edd', // Bold purple-magenta for emphasis
+  violet: '#6c71c4', // Soft violet
+  highlightLow: '#023e8a', // Deep vibrant blue for low highlights
+  highlightMed: '#4361ee', // Medium blue for hover or active states
+  highlightHigh: '#4cc9f0', // Bright cyan for high contrast highlights
+  skin: '#ff9472', // Peachy tone for primary accents
 };
 
 const solarizedTheme = createTheme({
@@ -51,28 +51,45 @@ const solarizedTheme = createTheme({
       secondary: solarizedColors.subtle,
     },
   },
-  
+
   typography: {
     fontFamily: '"Fira Sans", "Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
-      fontFamily: ' monospace',
+      fontFamily: '"Space Mono", monospace',
+      fontWeight: 700,
     },
     h2: {
       fontFamily: '"Space Mono", monospace',
+      fontWeight: 600,
     },
     h3: {
       fontFamily: '"Space Mono", monospace',
+      fontWeight: 500,
     },
     h4: {
-      fontFamily: '"Space Mono", monospace',
+      fontFamily: '"Roboto", sans-serif',
     },
     h5: {
-      fontFamily: '"Space Mono", monospace',
+      fontFamily: '"Roboto", sans-serif',
     },
     h6: {
+      fontFamily: '"Roboto", sans-serif',
+    },
+    body1: {
+      fontSize: '1rem',
+      fontWeight: 400,
+    },
+    body2: {
+      fontSize: '0.875rem',
+      fontWeight: 300,
+    },
+    button: {
       fontFamily: '"Space Mono", monospace',
+      fontWeight: 600,
+      textTransform: 'none',
     },
   },
+
   components: {
     MuiAppBar: {
       styleOverrides: {
@@ -85,14 +102,32 @@ const solarizedTheme = createTheme({
       styleOverrides: {
         root: {
           textTransform: 'none',
+          fontWeight: 600,
+          borderRadius: '8px',
+          color: solarizedColors.text,
         },
       },
     },
-    // MuiCssBaseline: {
-    //   styleOverrides: `
-    //     @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap');
-    //   `,
-    // },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          '& label.Mui-focused': {
+            color: solarizedColors.primary,
+          },
+          '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+              borderColor: solarizedColors.muted,
+            },
+            '&:hover fieldset': {
+              borderColor: solarizedColors.secondary,
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: solarizedColors.primary,
+            },
+          },
+        },
+      },
+    },
   },
 });
 
