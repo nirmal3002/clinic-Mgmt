@@ -18,7 +18,7 @@ const app = express()
 app.use(express.json());
 // app.use(cors());
 const corsOptions = {
-      origin: ['https://clinic-management-0q8q.onrender.com',`https://5000-nirmal3002-clinicmgmt-miivutagmk6.ws-us117.gitpod.io`] ,// Replace with your frontend origin
+      origin: ['https://clinic-management-0q8q.onrender.com','https://5000-nirmal3002-clinicmgmt-miivutagmk6.ws-us117.gitpod.io'] ,// Replace with your frontend origin
       methods: ['GET', 'POST', 'PUT', 'DELETE'],
       credentials: true, // Allow cookies if needed
     };
