@@ -2,22 +2,27 @@ import React, { useState } from "react";
 import { Button, TextField, Typography, Box, Container } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [name, setName] = useState(""); // State for name
   const [email, setEmail] = useState(""); // State for email
   const [password, setPassword] = useState(""); // State for password
   const theme = useTheme(); // Use the Solarized theme for styling
+  const navigate = useNavigate();
+  const URL = process.env.REACT_APP_API_URL; // Access environment variable
 
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/register", {
+      const response = await axios.post(`${URL}/api/auth/register`, {
         name,
         email,
         password,
       });
       alert("Signup successful");
+      localStorage.setItem("token", response.data.token);
+      navigate("/");
     } catch (err) {
       console.error(err.response?.data || "An error occurred");
       alert(err.response?.data?.message || "An error occurred");
