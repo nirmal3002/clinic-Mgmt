@@ -71,6 +71,14 @@ const HomePage = () => {
       });
   }, []);
 
+  const handleLogout = () => {
+    // Remove the token from localStorage
+    localStorage.removeItem("token");
+
+    // Redirect to the login page
+    navigate("/login");
+  };
+
   if (loading) {
     return (
       <Box display="flex" justifyContent="center" alignItems="center" minHeight="70vh">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {  Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 import {
   AppBar,
@@ -9,10 +9,12 @@ import {
   Box,
   Menu,
   MenuItem,
-
+  IconButton,
+  Tooltip
 } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import MenuBookIcon from '@mui/icons-material/MenuBook'; // Added Notes icon
+import LogoutIcon from '@mui/icons-material/ExitToApp'; // Logout icon
 
 const notesPages = [
   { title: 'Home', path: '/notes/home' },
@@ -30,13 +32,24 @@ const Navbar = () => {
     setNotesAnchorEl(null);
   };
 
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    // Remove the token from localStorage
+    localStorage.removeItem("token");
+
+    // Redirect to the login page
+    navigate("/login");
+  };
+
+  const token = localStorage.getItem("token"); // Check if the token exists
+
   return (
     <AppBar position="static" color="transparent" elevation={0} sx={{ width: '100%' }}>
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: 'primary.main' }}>
-          clinic Management Project
+          Clinic Management Project
         </Typography>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <Button
             color="primary"
             component={RouterLink}
@@ -68,7 +81,15 @@ const Navbar = () => {
               </MenuItem>
             ))}
           </Menu>
-         
+
+          {/* Show Logout button only if the user is logged in */}
+          {token && (
+            <Tooltip title="Logout">
+              <IconButton color="primary" onClick={handleLogout}>
+                <LogoutIcon />
+              </IconButton>
+            </Tooltip>
+          )}
         </Box>
       </Toolbar>
     </AppBar>
