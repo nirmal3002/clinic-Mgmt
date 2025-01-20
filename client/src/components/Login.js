@@ -10,7 +10,7 @@ const Login = () => {
   const theme = useTheme(); // Use the Solarized theme for styling
   const navigate = useNavigate();
   const URL = process.env.REACT_APP_API_URL;
-  
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -47,7 +47,7 @@ const Login = () => {
         }}
       >
         <img
-          src="client/public/pngegg.png" // Replace with the actual path to your logo
+          src="pngegg.png" // Replace with the actual path to your logo
           alt="Logo"
           style={{
             width: "80px",
