@@ -4,6 +4,7 @@ const User = require("../models/User"); // Adjust the path based on your folder 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 console.log(process.env.JWT_SECRET)
+
 // Register Route
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
