@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require("../models/User"); // Adjust the path based on your folder structure
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
+console.log(process.env.JWT_SECRET)
 // Register Route
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
@@ -39,6 +39,7 @@ router.post("/login", async (req, res) => {
 
     res.json({ token, user: { id: user._id, name: user.name, email: user.email } });
   } catch (err) {
+    console.log(err)
     res.status(500).json({ error: err.message });
   }
 });

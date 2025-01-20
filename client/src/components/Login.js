@@ -9,8 +9,8 @@ const Login = () => {
   const [password, setPassword] = useState(""); // State for password
   const theme = useTheme(); // Use the Solarized theme for styling
   const navigate = useNavigate();
-  const URL = process.env.REACT_APP_API_URL; // Access environment variable
-
+  const URL = process.env.REACT_APP_API_URL;
+  
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
