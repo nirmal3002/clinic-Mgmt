@@ -11,7 +11,7 @@ import Dashboard from "./components/Dashboard";
 import ExportPage from './components/ExportPage'
 import SearchPatient from './components/SearchPatient';
 import QRCodePage from './components/QrCode';
-import ProtectedRoute from "./components/ProtectedRoute"; // Import ProtectedRoute
+import ProtectedRoute from "./ProtectedRoute"; // Import ProtectedRoute
 
 
 import solarizedTheme from './container/Theme';
@@ -37,7 +37,7 @@ const App = () => {
                         <Route path="/detail/:id" element={<DetailsPatient />} />
                         <Route path="/export" element={<ExportPage />} />
                         <Route path="/search" element={<SearchPatient />} />
-                        <Route path="/" element={<HomePage />} />
+                        <Route path="/" element={<HomePage />} />                    
                         <Route path="/scan" element={<QRCodePage />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<Signup />} />

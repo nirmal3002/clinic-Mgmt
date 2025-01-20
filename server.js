@@ -26,7 +26,8 @@ app.use(cors(corsOptions));
 app.use("/api/auth", authRoutes); // This sets the base path for the auth routes
 
 
-app.get("/home", (req, res) => {
+
+app.get("/home",(req, res) => {
     res.send("HomePage");
 });
 

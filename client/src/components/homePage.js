@@ -3,7 +3,7 @@
 
 // Import required libraries
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Container,
   Typography,
@@ -37,6 +37,17 @@ const HomePage = () => {
     recentPatient: null,
   });
   const [loading, setLoading] = useState(true);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      // Redirect to login page if no token is found
+      navigate("/login");
+    }
+  }, [navigate]);
 
   useEffect(() => {
     axios
