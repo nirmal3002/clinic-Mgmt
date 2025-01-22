@@ -20,7 +20,7 @@ const Login = () => {
       });
       alert("Login successful");
       localStorage.setItem("token", response.data.token);
-      navigate("/"); // Store token in localStorage
+      navigate("/");
     } catch (err) {
       console.error(err.response?.data || "An error occurred");
       alert(err.response?.data?.message || "An error occurred");
@@ -28,160 +28,151 @@ const Login = () => {
   };
 
   return (
-    <Container
-      maxWidth="sm"
+    <Box
       sx={{
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
-        borderRadius: "8px",
-        padding: "32px",
-        marginTop: "64px",
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundImage: `url(background.jpg)`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        padding: "16px",
       }}
     >
-      {/* Logo/Header */}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          marginBottom: "16px",
+     <Container
+    maxWidth="sm"
+    sx={{
+      backgroundColor: "rgba(255, 255, 255, 0.6)", // Semi-transparent white
+      boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.3)",
+      borderRadius: "16px",
+      padding: "40px",
+      textAlign: "center",
+      backdropFilter: "blur(50px)", // Frosted glass effect
+    }}
+  >
+    {/* Logo/Header */}
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        marginBottom: "24px",
+      }}
+    >
+      <img
+        src="pngegg.png" // Replace with the actual path to your logo
+        alt="Logo"
+        style={{
+          width: "100px",
+          height: "100px",
+          borderRadius: "50%",
+          boxShadow: `0px 4px 12px ${theme.palette.primary.main}`,
         }}
-      >
-        <img
-          src="pngegg.png" // Replace with the actual path to your logo
-          alt="Logo"
-          style={{
-            width: "80px",
-            height: "80px",
-            borderRadius: "50%",
-            border: `2px solid ${theme.palette.primary.main}`,
-          }}
-        />
-      </Box>
+      />
+    </Box>
 
-      {/* Login Title */}
-      <Typography
-        variant="h4"
-        align="center"
+    {/* Welcome Back Message */}
+    <Typography
+      variant="h4"
+      align="center"
+      sx={{
+        marginBottom: "24px",
+        color: theme.palette.text.primary,
+        fontWeight: "bold",
+        fontFamily: theme.typography.h2.fontFamily,
+      }}
+    >
+      Welcome Back
+    </Typography>
+
+    {/* Login Form */}
+    <Box
+      component="form"
+      onSubmit={handleLogin}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "16px",
+      }}
+    >
+      <TextField
+        label="Email"
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        fullWidth
+        InputLabelProps={{
+          style: { color: theme.palette.text.secondary },
+        }}
+        InputProps={{
+          style: { color: theme.palette.text.primary },
+        }}
         sx={{
-          marginBottom: "16px",
-          color: theme.palette.text.primary,
-          fontFamily: theme.typography.h2.fontFamily,
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+              borderColor: theme.palette.primary.main,
+            },
+            "&:hover fieldset": {
+              borderColor: theme.palette.secondary.main,
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: theme.palette.primary.main,
+            },
+          },
+          transition: "all 0.3s ease",
+        }}
+      />
+      <TextField
+        label="Password"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+        fullWidth
+        InputLabelProps={{
+          style: { color: theme.palette.text.secondary },
+        }}
+        InputProps={{
+          style: { color: theme.palette.text.primary },
+        }}
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+              borderColor: theme.palette.primary.main,
+            },
+            "&:hover fieldset": {
+              borderColor: theme.palette.secondary.main,
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: theme.palette.primary.main,
+            },
+          },
+          transition: "all 0.3s ease",
+        }}
+      />
+      <Button
+        type="submit"
+        fullWidth
+        variant="contained"
+        sx={{
+          background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+          color: "#fff",
+          fontWeight: "bold",
+          textTransform: "none",
+          boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
+          "&:hover": {
+            background: `linear-gradient(45deg, ${theme.palette.secondary.main}, ${theme.palette.primary.main})`,
+          },
+          transition: "all 0.3s ease",
         }}
       >
         Login
-      </Typography>
-
-      {/* Login Form */}
-      <Box
-        component="form"
-        onSubmit={handleLogin}
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "24px",
-        }}
-      >
-        <TextField
-          label="Email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          fullWidth
-          InputLabelProps={{
-            style: { color: theme.palette.text.secondary },
-          }}
-          InputProps={{
-            style: { color: theme.palette.text.primary },
-          }}
-          sx={{
-            "& .MuiOutlinedInput-root": {
-              "& fieldset": {
-                borderColor: theme.palette.primary.main,
-              },
-              "&:hover fieldset": {
-                borderColor: theme.palette.secondary.main,
-              },
-              "&.Mui-focused fieldset": {
-                borderColor: theme.palette.primary.main,
-              },
-            },
-          }}
-        />
-        <TextField
-          label="Password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          fullWidth
-          InputLabelProps={{
-            style: { color: theme.palette.text.secondary },
-          }}
-          InputProps={{
-            style: { color: theme.palette.text.primary },
-          }}
-          sx={{
-            "& .MuiOutlinedInput-root": {
-              "& fieldset": {
-                borderColor: theme.palette.primary.main,
-              },
-              "&:hover fieldset": {
-                borderColor: theme.palette.secondary.main,
-              },
-              "&.Mui-focused fieldset": {
-                borderColor: theme.palette.primary.main,
-              },
-            },
-          }}
-        />
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          sx={{
-            backgroundColor: theme.palette.primary.main,
-            color: theme.palette.text.primary,
-            textTransform: "none",
-            "&:hover": {
-              backgroundColor: theme.palette.secondary.main,
-            },
-          }}
-        >
-          Login
-        </Button>
-      </Box>
-
-      {/* Forgot Password Link */}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          marginTop: "16px",
-        }}
-      >
-        <Link
-          href="#"
-          underline="hover"
-          sx={{
-            color: theme.palette.secondary.main,
-            fontFamily: theme.typography.h2.fontFamily,
-          }}
-        >
-          Forgot Password?
-        </Link>
-        <Link
-          href="/signup"
-          underline="hover"
-          sx={{
-            color: theme.palette.primary.main,
-            fontFamily: theme.typography.h2.fontFamily,
-          }}
-        >
-          Sign Up
-        </Link>
-      </Box>
-    </Container>
+      </Button>
+    </Box>
+  </Container>
+</Box>
   );
 };
 
