@@ -3,9 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-// import Notification from './Notification';
 
-// import '../styles/PersonEdit.css'; // Component-specific styles
 
 
 const Patientupdate= () => {
@@ -13,7 +11,6 @@ const Patientupdate= () => {
 const { id } = useParams();
 const navigate = useNavigate();
 const [patient, setPatient] = useState({ name: '', age: '' , contact_number: '' , gender: '' });
-// const [showNotification,setShowNotification] = useState(null)
 
 
 const URL = process.env.REACT_APP_API_URL; // Access environment variable
@@ -43,15 +40,11 @@ const URL = process.env.REACT_APP_API_URL; // Access environment variable
     //   setShowNotification({ type: 'success', text: `Patient "${response.data.name}" updated successfully!` });
     } catch (error) {
       console.error('Error updating person:', error);
-    //   setShowNotification({ type: 'error', text: 'Failed to update the patient. Please try again.' });
 
     }
  
     
   };
-//   const handleCloseNotification = () => {
-//     setShowNotification(null);
-//   };
 
   const handleCancel = () => {
     navigate(`/detail/${id}`); // Navigate back to the person details page

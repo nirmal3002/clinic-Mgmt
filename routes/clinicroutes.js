@@ -1,14 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const clinicController = require('../controllers/cliniccontrol');
-// const authMiddleware = require('../middleware/authMiddleware')
 router.post('/clinics', clinicController.createclinic);
-// router.post("/clinics",async (req,res)=>{
-//     let newData = new clinics( )
-//     const Data = await newData.save();
-//     res.json(Data)
-   
-// })
 router.get('/clinics', clinicController.getpatient);
 router.get('/clinics/:id', clinicController.getpatientById);
 router.put('/clinics/:id', clinicController.updatePatient);   // Update a room by ID
