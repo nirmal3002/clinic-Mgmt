@@ -1,31 +1,43 @@
 import React, { useState } from "react";
-import { Button, TextField, Typography, Box, Container } from "@mui/material";
+import {
+  Button,
+  TextField,
+  Typography,
+  Box,
+  Container,
+  Link,
+} from "@mui/material";
+
 import { useTheme } from "@mui/material/styles";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  const [name, setName] = useState(""); // State for name
-  const [email, setEmail] = useState(""); // State for email
-  const [password, setPassword] = useState(""); // State for password
-  const theme = useTheme(); // Use the Solarized theme for styling
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const theme = useTheme();
   const navigate = useNavigate();
-  const URL = process.env.REACT_APP_API_URL; // Access environment variable
+
+  const URL = process.env.REACT_APP_API_URL;
 
   const handleSignup = async (e) => {
     e.preventDefault();
+
     try {
       const response = await axios.post(`${URL}/api/auth/register`, {
         name,
         email,
         password,
       });
-      alert("Signup successful");
-      localStorage.setItem("token", response.data.token);
-      navigate("/");
+
+      alert(response.data.message);
+
+      navigate("/login");
     } catch (err) {
       console.error(err.response?.data || "An error occurred");
-      alert(err.response?.data?.message || "An error occurred");
+      alert(err.response?.data?.message || "Signup failed");
     }
   };
 
@@ -40,20 +52,17 @@ const Signup = () => {
         marginTop: "64px",
       }}
     >
-      {/* Signup Header */}
       <Typography
         variant="h4"
         align="center"
         sx={{
           marginBottom: "16px",
           color: theme.palette.text.primary,
-          fontFamily: theme.typography.h2.fontFamily,
         }}
       >
         Signup
       </Typography>
 
-      {/* Signup Form */}
       <Box
         component="form"
         onSubmit={handleSignup}
@@ -70,26 +79,8 @@ const Signup = () => {
           onChange={(e) => setName(e.target.value)}
           required
           fullWidth
-          InputLabelProps={{
-            style: { color: theme.palette.text.secondary },
-          }}
-          InputProps={{
-            style: { color: theme.palette.text.primary },
-          }}
-          sx={{
-            "& .MuiOutlinedInput-root": {
-              "& fieldset": {
-                borderColor: theme.palette.primary.main,
-              },
-              "&:hover fieldset": {
-                borderColor: theme.palette.secondary.main,
-              },
-              "&.Mui-focused fieldset": {
-                borderColor: theme.palette.primary.main,
-              },
-            },
-          }}
         />
+
         <TextField
           label="Email"
           type="email"
@@ -97,26 +88,8 @@ const Signup = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
           fullWidth
-          InputLabelProps={{
-            style: { color: theme.palette.text.secondary },
-          }}
-          InputProps={{
-            style: { color: theme.palette.text.primary },
-          }}
-          sx={{
-            "& .MuiOutlinedInput-root": {
-              "& fieldset": {
-                borderColor: theme.palette.primary.main,
-              },
-              "&:hover fieldset": {
-                borderColor: theme.palette.secondary.main,
-              },
-              "&.Mui-focused fieldset": {
-                borderColor: theme.palette.primary.main,
-              },
-            },
-          }}
         />
+
         <TextField
           label="Password"
           type="password"
@@ -124,41 +97,31 @@ const Signup = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
           fullWidth
-          InputLabelProps={{
-            style: { color: theme.palette.text.secondary },
-          }}
-          InputProps={{
-            style: { color: theme.palette.text.primary },
-          }}
-          sx={{
-            "& .MuiOutlinedInput-root": {
-              "& fieldset": {
-                borderColor: theme.palette.primary.main,
-              },
-              "&:hover fieldset": {
-                borderColor: theme.palette.secondary.main,
-              },
-              "&.Mui-focused fieldset": {
-                borderColor: theme.palette.primary.main,
-              },
-            },
-          }}
         />
+
         <Button
           type="submit"
           fullWidth
           variant="contained"
           sx={{
-            backgroundColor: theme.palette.primary.main,
-            color: theme.palette.text.primary,
             textTransform: "none",
-            "&:hover": {
-              backgroundColor: theme.palette.secondary.main,
-            },
+            paddingY: 1.5,
+            fontWeight: "bold",
           }}
         >
           Signup
         </Button>
+
+        <Typography align="center">
+          Already have an account?{" "}
+          <Link
+            component="button"
+            variant="body2"
+            onClick={() => navigate("/login")}
+          >
+            Login
+          </Link>
+        </Typography>
       </Box>
     </Container>
   );
