@@ -17,6 +17,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const theme = useTheme();
   const navigate = useNavigate();
+
   const URL = process.env.REACT_APP_API_URL;
 
   const handleLogin = async (e) => {
@@ -34,7 +35,7 @@ const Login = () => {
 
       navigate("/dashboard");
     } catch (err) {
-      console.error(err.response?.data || "An error occurred");
+      console.error(err.response?.data || err.message);
       alert(err.response?.data?.message || "Invalid credentials");
     }
   };
@@ -108,14 +109,20 @@ const Login = () => {
             alignItems: "center",
           }}
         >
+          {/* Logo */}
           <Box sx={{ mb: 2 }}>
             <img src="/pngegg.png" alt="logo" width={80} height={80} />
           </Box>
 
-          <Typography component="h1" variant="h5" sx={{ fontWeight: "bold" }}>
-            Sign In
+          <Typography
+            component="h1"
+            variant="h5"
+            sx={{ fontWeight: "bold" }}
+          >
+            Sign in to your account
           </Typography>
 
+          {/* Login Form */}
           <Box
             component="form"
             onSubmit={handleLogin}
@@ -141,7 +148,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            {/* SIGN IN BUTTON */}
+            {/* Sign In Button */}
             <Button
               type="submit"
               fullWidth
@@ -157,7 +164,7 @@ const Login = () => {
               Sign In
             </Button>
 
-            {/* SIGN UP BUTTON FOR NEW USERS */}
+            {/* Sign Up Button for New Users */}
             <Box sx={{ mt: 2, textAlign: "center" }}>
               <Typography variant="body2" sx={{ mb: 1 }}>
                 New user? Create an account here.
@@ -167,22 +174,20 @@ const Login = () => {
                 type="button"
                 fullWidth
                 variant="outlined"
-                onClick={() => navigate("/Signup")}
+                onClick={() => navigate("/signup")}
                 sx={{
                   py: 1.5,
                   textTransform: "none",
                   fontWeight: "bold",
-                  borderWidth: 2,
-                  borderColor: theme.palette.primary.main,
                   color: theme.palette.primary.main,
+                  borderColor: theme.palette.primary.main,
                   "&:hover": {
-                    borderWidth: 2,
                     backgroundColor: theme.palette.action.hover,
                     borderColor: theme.palette.primary.dark,
                   },
                 }}
               >
-                Sign Up
+                Create New Account
               </Button>
             </Box>
           </Box>
