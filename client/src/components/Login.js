@@ -7,7 +7,6 @@ import {
   Paper,
   TextField,
   Typography,
-  Link,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
@@ -41,7 +40,7 @@ const Login = () => {
   };
 
   return (
-    <Grid container component="main" sx={{ height: "100vh" }}>
+    <Grid container component="main" sx={{ minHeight: "100vh" }}>
       {/* Left Side */}
       <Grid
         item
@@ -73,6 +72,7 @@ const Login = () => {
             transform: "translate(-50%, -50%)",
             zIndex: 2,
             textAlign: "center",
+            width: "90%",
           }}
         >
           <Typography
@@ -89,11 +89,20 @@ const Login = () => {
       </Grid>
 
       {/* Right Side */}
-      <Grid item xs={12} sm={6} md={5} component={Paper} elevation={6} square>
+      <Grid
+        item
+        xs={12}
+        sm={6}
+        md={5}
+        component={Paper}
+        elevation={6}
+        square
+      >
         <Container
           maxWidth="xs"
           sx={{
             mt: 8,
+            mb: 4,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -132,6 +141,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
 
+            {/* SIGN IN BUTTON */}
             <Button
               type="submit"
               fullWidth
@@ -139,7 +149,7 @@ const Login = () => {
               sx={{
                 mt: 3,
                 mb: 2,
-                paddingY: 1.5,
+                py: 1.5,
                 textTransform: "none",
                 fontWeight: "bold",
               }}
@@ -147,17 +157,33 @@ const Login = () => {
               Sign In
             </Button>
 
-            <Box sx={{ textAlign: "center" }}>
-              <Typography variant="body2">
-                New User?{" "}
-                <Link
-                  component="button"
-                  variant="body2"
-                  onClick={() => navigate("/signup")}
-                >
-                  Create Account
-                </Link>
+            {/* SIGN UP BUTTON FOR NEW USERS */}
+            <Box sx={{ mt: 2, textAlign: "center" }}>
+              <Typography variant="body2" sx={{ mb: 1 }}>
+                New user? Create an account here.
               </Typography>
+
+              <Button
+                type="button"
+                fullWidth
+                variant="outlined"
+                onClick={() => navigate("/Signup")}
+                sx={{
+                  py: 1.5,
+                  textTransform: "none",
+                  fontWeight: "bold",
+                  borderWidth: 2,
+                  borderColor: theme.palette.primary.main,
+                  color: theme.palette.primary.main,
+                  "&:hover": {
+                    borderWidth: 2,
+                    backgroundColor: theme.palette.action.hover,
+                    borderColor: theme.palette.primary.dark,
+                  },
+                }}
+              >
+                Sign Up
+              </Button>
             </Box>
           </Box>
         </Container>
